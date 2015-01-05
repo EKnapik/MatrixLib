@@ -11,7 +11,7 @@ Library Commands:
 
 
 
-Idle Capabilities:
+Idle Capabilities and Usage:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
