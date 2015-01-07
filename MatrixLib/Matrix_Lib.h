@@ -27,34 +27,36 @@ struct Matrix_Vector
 }
 
 // Typedef all the ways you can write the enums into the struct Matrix_Vector
-typedef struct Matrix_Vector Vec2, Vec3, Vec4, Mat2, Mat3, Mat4;
+typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
 
 
+Vec mkVec( double data[] );
 
-	//these will be given an aribitraty matrix
-mkMat // This one will guess which size it should be and set the enum type correctly
-mkVec
-
-det() // determinate 
-scale(Mat, int) // scales by vector or matrix by _ amount
-inverse(Mat)
-pow() // raises matrix to _ power much like scale ... same formatting
-
-project(Vec, Vec)
-angle(Vec, Vec) // the angle between two vectors
-dist(Vec, Vec) // distance between two vectors
+Mat mkMat( double data[] );
+//these will be given an aribitraty matrix
+// This one will guess which size it should be and set the enum type correctly
 
 
-normalize() // this is for matrix or vectors
-multi(Mat, Mat) // multiplies the two matricies together or does matrix vector multiplication must be able to multiply
-add( ) // adds the two matrix or vectors together must be able to add them
-crossProd() // cross product of two .. must be able to do the cross or returns null
-dotProd() // dot product of two .. must be able to do the dot product or returns null
+double det( Mat matrix );
+Mat_Vec scale( Mat_Vec matrix, double scaleAmount );
+Mat inverse( Mat matrix );
+Mat pow( Mat matrix, int power );
+
+Vec project( Vec vector1, Vec vector2 );
+double angle( Vec vector1, Vec vector2 );
+double dist( Vec vector1, Vec vector2 );
+
+
+Mat_Vec normalize( Mat_Vec mat_vec );
+Mat_Vec multi( Mat matrix, Mat_Vec mat_vec );
+Mat_Vec add( Mat_Vec mat_vec1, Mat_Vec mat_vec2 );
+double dotProd( Vec vec1, Vec vec2 );
+
+Mat2 mkMat2_Identiy( void );
+Mat3 mkMat3_Identiy( void );
+Mat4 mkMat4_Identiy( void );
 
 	//returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
-mkMat2_Identiy()
-mkMat3_Identiy()
-mkMat4_Identiy()
 
 
 
