@@ -13,7 +13,8 @@ typedef enum
 	MAT4,
 	VEC2,
 	VEC3,
-	VEC4
+	VEC4,
+	Mat_Vec
 } Mat_Vec_Type;
 
 struct Matrix_Vector
@@ -27,39 +28,117 @@ struct Matrix_Vector
 }
 
 // Typedef all the ways you can write the enums into the struct Matrix_Vector
+// These are all refrences to the same struct, this will just be for convenience when
+// programming using the library this is also the same enum type
 typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
 
-
+/**
+* this takes in an array of doubles and given that array will determine
+* what kind of vector to make given the size of the array, this will place
+* the values into the x, y, z, w and sets the enum type returns a
+* Matrix_Vector struct
+*
+* @param an array of doubles
+* @return a Matrix_Vector Struct configured for a vector
+**/
 Vec mkVec( double data[] );
 
+/**
+* This will take an array of doubles and given the size of the array
+* will determine what kind of matrix array to make and what to set the enum as
+* This will not set variables for the x,y,z,w doubles they are never set. This
+* only uses the *data
+*
+* @param an array of doubles
+* @return a Matrix_Vector Struct configured for a Matrix
+**/
 Mat mkMat( double data[] );
-//these will be given an aribitraty matrix
-// This one will guess which size it should be and set the enum type correctly
 
 
+/**
+* given a matrix in the Matrix_Vector Struct will return the determinate
+* of any matrix that is of size 2, 3, or 4.
+* returns a double
+**/
 double det( Mat matrix );
+
+/**
+* will scale a matrix or a vector in the Matrix_Vector Struct format and
+* multiply each part by the double scaleAmount
+* THIS CHANGES THAT MATRIX_VECTOR STRUCT
+* returns that Matrix_Vector Struct
+**/
 Mat_Vec scale( Mat_Vec matrix, double scaleAmount );
+
+/**
+* given a matrix in the Matrix_Vector Struct format will return the inverse
+* of that matrix, if the inverse does not exist will return NULL.
+* THIS CHANGES THAT MATRIX_VECTOR STRUCT
+* returns the inverse of that Matrix_Vector Struct
+**/
 Mat inverse( Mat matrix );
+
+/**
+* will multiply that matrix in the Matrix_Vector Struct format by itself
+* the power number of times then returns that Matrix_Vector Struct.
+* THIS CHANGES THAT MATRIX_VECTOR STRUCT
+**/
 Mat pow( Mat matrix, int power );
 
+/**
+* This returns a new vector that is the projection of vector2 onto vector1.
+* this will make a new Matrix_Vector Struct and return the projection
+* return Matrix_Vector Struct
+**/
 Vec project( Vec vector1, Vec vector2 );
+
+/**
+* returns the angle between two vectors
+* retuns a double that is the amount of degrees between two vectors
+**/
 double angle( Vec vector1, Vec vector2 );
+
+/**
+* retuns the double value that is the distance between two vectors
+* returns a double
+**/
 double dist( Vec vector1, Vec vector2 );
 
-
+/**
+* given a matrix or a vector as notated by the Mat_Vec notation. and returns
+* that vector or matrix normalized.
+* THIS CHANGES THAT MATRIX_VECTOR STRUCT
+* retuns a Matrix_Vector Struct
+**/
 Mat_Vec normalize( Mat_Vec mat_vec );
+
+/**
+* if valid will do the matrix multiplication of two matrixes and can do the
+* the matrix vector multiplication.
+* returns a new Matrix_Vector Struct
+**/
 Mat_Vec multi( Mat matrix, Mat_Vec mat_vec );
+
+/**
+* will add two matricies or two vectors together and returns
+* a new Matrix_Vector Struct
+* returns a Matrix_Vector Struct
+**/
 Mat_Vec add( Mat_Vec mat_vec1, Mat_Vec mat_vec2 );
+
+/**
+* this will take the dot product of two vectors and return
+* the double that is the dot product of those two vectors
+* returns a double
+**/
 double dotProd( Vec vec1, Vec vec2 );
 
+/**
+* returns an identity matrix that is the appropriate size
+* returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
+**/
 Mat2 mkMat2_Identiy( void );
 Mat3 mkMat3_Identiy( void );
 Mat4 mkMat4_Identiy( void );
-
-	//returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
-
-
-
-
 
 #endif
