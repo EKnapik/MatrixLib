@@ -65,7 +65,6 @@ double det( Mat matrix );
 /**
 * will scale a matrix or a vector in the Matrix_Vector Struct format and
 * multiply each part by the double scaleAmount
-* THIS CHANGES THAT MATRIX_VECTOR STRUCT
 * returns that Matrix_Vector Struct
 **/
 Mat_Vec scale( Mat_Vec matrix, double scaleAmount );
@@ -73,7 +72,6 @@ Mat_Vec scale( Mat_Vec matrix, double scaleAmount );
 /**
 * given a matrix in the Matrix_Vector Struct format will return the inverse
 * of that matrix, if the inverse does not exist will return NULL.
-* THIS CHANGES THAT MATRIX_VECTOR STRUCT
 * returns the inverse of that Matrix_Vector Struct
 **/
 Mat inverse( Mat matrix );
@@ -81,9 +79,24 @@ Mat inverse( Mat matrix );
 /**
 * will multiply that matrix in the Matrix_Vector Struct format by itself
 * the power number of times then returns that Matrix_Vector Struct.
-* THIS CHANGES THAT MATRIX_VECTOR STRUCT
 **/
 Mat pow( Mat matrix, int power );
+
+
+/**
+* This will rotate a matrix by so many degrees according to the char passed in
+* takes char x, y, or z and degrees 0 -  360. Then rotates the matrix accordingly
+* Matrix must be a Mat4
+* returns Mat4 a new Mat
+**/
+Mat4 rotate( Mat4 matrix, char axis, double degrees );
+
+/**
+* given a matrix that is a 2x2 or 3x3 or 4x4 will return the transpose of that matrix
+* This makes a new matrix and returns the transpose of the matrix passed in.
+* returns a Mat
+**/
+Mat transpose( Mat matrix );
 
 /**
 * This returns a new vector that is the projection of vector2 onto vector1.
@@ -107,7 +120,6 @@ double dist( Vec vector1, Vec vector2 );
 /**
 * given a matrix or a vector as notated by the Mat_Vec notation. and returns
 * that vector or matrix normalized.
-* THIS CHANGES THAT MATRIX_VECTOR STRUCT
 * retuns a Matrix_Vector Struct
 **/
 Mat_Vec normalize( Mat_Vec mat_vec );
