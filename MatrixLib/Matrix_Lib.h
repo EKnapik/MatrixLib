@@ -136,7 +136,12 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec );
 * a new Matrix_Vector Struct
 * returns a Matrix_Vector Struct
 **/
-Mat_Vec add( Mat_Vec mat_vec1, Mat_Vec mat_vec2 );
+Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 );
+
+/**
+* prints to standard out the matrix or vector passed in. returns void;
+**/
+void print( Mat_Vec mat_vec );
 
 /**
 * this will take the dot product of two vectors and return
