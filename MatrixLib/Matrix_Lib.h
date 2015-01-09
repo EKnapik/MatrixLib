@@ -54,6 +54,13 @@ Vec mkVec( double data[] );
 **/
 Mat mkMat( double data[] );
 
+/**
+* destroys a matrix, frees the dynamically allocated data region
+* of the struct. This should probably be done, yea that would be nice
+* kinda
+* returns void
+**/
+void destroyMat( Mat matrix );
 
 /**
 * given a matrix in the Matrix_Vector Struct will return the determinate
