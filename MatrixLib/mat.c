@@ -6,12 +6,14 @@
 
 
 // External Library Includes
-
+#include <stdio.h>
 
 
 
 // Internal Library Includes
 #include "Matrix_Lib.h"
+
+
 
 Mat mkMat( double data[] )
 {
@@ -51,4 +53,19 @@ Mat mkMat( double data[] )
 	}
 
 	return matrix;
+}
+
+
+void destroyMat( Mat matrix )
+{
+	free( matrix.data );
+	matrix.data = NULL;
+	return;
+}
+
+
+void print( Mat_Vec mat_vec )
+{
+	
+	return;
 }
