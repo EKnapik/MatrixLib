@@ -161,8 +161,8 @@ double dotProd( Vec vec1, Vec vec2 );
 * returns an identity matrix that is the appropriate size
 * returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
 **/
-Mat2 mkMat2_Identiy( void );
-Mat3 mkMat3_Identiy( void );
-Mat4 mkMat4_Identiy( void );
+Mat2 mkMat2I( void );
+Mat3 mkMat3I( void );
+Mat4 mkMat4I( void );
 
 #endif
