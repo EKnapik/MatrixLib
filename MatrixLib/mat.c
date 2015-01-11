@@ -64,6 +64,36 @@ void destroyMat( Mat matrix )
 }
 
 
+double det( Mat matrix )
+{
+
+}
+
+
+Mat inverse( Mat matrix )
+{
+
+}
+
+
+Mat pow( Mat matrix, int power )
+{
+
+}
+
+
+Mat4 rotate( Mat4 matrix, char axis, double degrees )
+{
+
+}
+
+
+Mat transpose( Mat matrix )
+{
+
+}
+
+
 
 
 void print( Mat_Vec mat_vec )
