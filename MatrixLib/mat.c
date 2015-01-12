@@ -95,7 +95,6 @@ Mat transpose( Mat matrix )
 
 
 
-
 void print( Mat_Vec mat_vec )
 {
 	if( mat_vec.type == Vec2 )
