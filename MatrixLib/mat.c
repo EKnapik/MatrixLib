@@ -98,13 +98,64 @@ Mat transpose( Mat matrix )
 
 void print( Mat_Vec mat_vec )
 {
-	if( mat_vec.type == Vec || mat_vec.type == Vec2 || mat_vec.type == Vec3 || mat_vec.type == Vec4 )
+	if( mat_vec.type == Vec2 )
 	{
+		printf( "%f\n", mat_vec.x );
+		printf( "%f\n", mat_vec.y );
 
 	}
-	else if( mat_vec.type == Mat || mat_vec.type == Mat2 || mat_vec.type == Mat3 || mat_vec.type == Mat4 )
+	else if( mat_vec.type == Vec3 )
 	{
+		printf( "%f\n", mat_vec.x );
+		printf( "%f\n", mat_vec.y );
+		printf( "%f\n", mat_vec.z );
 
+	}
+	else if( mat_vec.type == Vec4 )
+	{
+		printf( "%f\n", mat_vec.x );
+		printf( "%f\n", mat_vec.y );
+		printf( "%f\n", mat_vec.z );
+		printf( "%f\n", mat_vec.w );
+
+	}
+	else if( mat_vec.type == Mat2 )
+	{
+		for( int row = 0; row < 2; row++ )
+		{
+			for( int col = 0; col < 2; col++ )
+			{
+				printf( "%f ", mat_vec->data[col + (row * 2)] );
+			}
+			printf( "\n" );
+		}
+
+	}
+	else if( mat_vec.type == Mat3 )
+	{
+		for( int row = 0; row < 3; row++ )
+		{
+			for( int col = 0; col < 3; col++ )
+			{
+				printf( "%f ", mat_vec->data[col + (row * 3)] );
+			}
+			printf( "\n" );
+		}
+	}
+	else if( mat_vec.type == Mat4 )
+	{
+		for( int row = 0; row < 4; row++ )
+		{
+			for( int col = 0; col < 4; col++ )
+			{
+				printf( "%f ", mat_vec->data[col + (row * 4)] );
+			}
+			printf( "\n" );
+		}
+	}
+	else
+	{
+		perror( "Unable to print the matrix to standard out" );
 	}
 	
 	return;
