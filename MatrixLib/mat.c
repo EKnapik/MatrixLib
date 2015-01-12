@@ -98,11 +98,11 @@ Mat transpose( Mat matrix )
 
 void print( Mat_Vec mat_vec )
 {
-	if( mat_vec.type == Vec )
+	if( mat_vec.type == Vec || mat_vec.type == Vec2 || mat_vec.type == Vec3 || mat_vec.type == Vec4 )
 	{
 
 	}
-	else if( mat_vec.type == Mat )
+	else if( mat_vec.type == Mat || mat_vec.type == Mat2 || mat_vec.type == Mat3 || mat_vec.type == Mat4 )
 	{
 
 	}
