@@ -66,7 +66,69 @@ void destroyMat( Mat matrix )
 
 double det( Mat matrix )
 {
+	double determinate;
+	if( matrix.type == MAT2 )
+	{
+		double val1, val2;
 
+		val1 = matrix->data[0] * matrix->data[3];
+		val2 = matrix->data[1] * matrix->data[2];
+
+		determinate = val1 - val2;
+	}
+	else if( matrix.type == MAT3 )
+	{
+		double val1, val2, val3;
+
+		val1 = matrix->data[0] * matrix->data[4] * matrix->data[8];
+		val2 = matrix->data[1] * matrix->data[5] * matrix->data[6];
+		val3 = matrix->data[2] * matrix->data[3] * matrix->data[7];
+
+		determinate = val1 + val2 + val3;
+
+		val1 = matrix->data[2] * matrix->data[4] * matrix->data[6];
+		val2 = matrix->data[0] * matrix->data[5] * matrix->data[7];
+		val3 = matrix->data[1] * matrix->data[3] * matrix->data[8];
+
+		determinate = determinate - val1 - val2 - val3;
+	}
+	else if( matrix.type == Mat4 )
+	{
+		Mat matrix1, matrix2, matrix3, matrix4;
+
+		matrix1 = mkMat( [ matrix->data[5], matrix->data[6], matrix->data[7],
+							matrix->data[9], matrix->data[10], matrix->data[11],
+							matrix->data[13], matrix->data[14], matrix->data[15] ] );
+
+		matrix2 = mkMat( [ matrix->data[4], matrix->data[6], matrix->data[7],
+							matrix->data[8], matrix->data[10], matrix->data[11],
+							matrix->data[12], matrix->data[14], matrix->data[15] ] );
+
+		matrix3 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[7],
+							matrix->data[8], matrix->data[9], matrix->data[11],
+							matrix->data[12], matrix->data[13], matrix->data[15] ] );
+
+		matrix4 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[6],
+							matrix->data[8], matrix->data[9], matrix->data[10],
+							matrix->data[12], matrix->data[13], matrix->data[14] ] );
+
+		determinate = matrix->data[0] * det(matrix1);
+		determinate = determinate - ( matrix->data[1] * det(matrix2) );
+		determinate = determinate + ( matrix->data[2] * det(matrix3) );
+		determinate = determinate - ( matrix->data[3] * det(matrix4) );
+
+		destroyMat( matrix1 );
+		destroyMat( matrix2 );
+		destroyMat( matrix3 );
+		destroyMat( matrix4 );
+	}
+	else
+	{
+		determinate = NULL;
+		perror( "Could not find the determinate of the matrix\n" );
+	}
+
+	return determinate;
 }
 
 
@@ -154,7 +216,7 @@ void print( Mat_Vec mat_vec )
 	}
 	else
 	{
-		perror( "Unable to print the matrix to standard out" );
+		perror( "Unable to print the matrix to standard out\n" );
 	}
 	
 	return;
