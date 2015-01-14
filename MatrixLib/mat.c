@@ -14,7 +14,7 @@
 #include "Matrix_Lib.h"
 
 
-
+// Many functions will use this one, to make thier own matrix to return it.
 Mat mkMat( double data[] )
 {
 	int numElements = sizeof( data ) / sizeof( double );
@@ -131,13 +131,13 @@ double det( Mat matrix )
 	return determinate;
 }
 
-
+// This will rely on the determinate function
 Mat inverse( Mat matrix )
 {
 
 }
 
-
+// This relies on the matrix multiplication function
 Mat pow( Mat matrix, int power )
 {
 
