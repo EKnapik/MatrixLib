@@ -152,7 +152,33 @@ Mat4 rotate( Mat4 matrix, char axis, double degrees )
 
 Mat transpose( Mat matrix )
 {
+	Mat matrixTrans;
 
+	if( matrix.type == MAT2 )
+	{
+		matrixTrans = mkMat( [ matrix->data[0], matrix->data[2], 
+								matrix->data[1], matrix->data[3] ] );
+	}
+	else if( matrix.type == MAT3 )
+	{
+		matrixTrans = mkMat( [ matrix->data[0], matrix->data[3], matrix->data[6],
+								matrix->data[1], matrix->data[4], matrix->data[7],
+								matrix->data[2], matrix->data[5], matrix->data[8] ] );
+	}
+	else if( matrix.type == MAT4 )
+	{
+		matrixTrans = mkMat( [ matrix->data[0], matrix->data[4], matrix->data[8], matrix->data[12],
+								matrix->data[1], matrix->data[5], matrix->data[9], matrix->data[13],
+								matrix->data[2], matrix->data[6], matrix->data[10], matrix->data[14],
+								matrix->data[3], matrix->data[7], matrix->data[11], matrix->data[15] ] );
+	}
+	else
+	{
+		perror( "Could not creat the transpose of the matrix passed in\n" );
+		matrixTrans = NULL;
+	}
+
+	return matrixTrans;
 }
 
 
