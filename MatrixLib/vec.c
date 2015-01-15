@@ -44,3 +44,17 @@ Vec mkVec( double data[] )
 
 	return vector;
 }
+
+
+Vec project( Vec vector1, Vec vector2 )
+{
+
+}
+
+
+double dotProd( Vec vec1, Vec vec2 )
+{
+
+}
+
+
