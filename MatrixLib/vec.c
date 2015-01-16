@@ -14,7 +14,6 @@
 #include "Matrix_Lib.h"
 
 
-
 Vec mkVec( double data[] )
 {
 	int numElements = sizeof( data ) / sizeof( double );
@@ -58,3 +57,31 @@ double dotProd( Vec vec1, Vec vec2 )
 }
 
 
+double angle( Vec vec1, Vec vec2 )
+{
+
+}
+
+
+double dist( Vec vec1, Vec vec2 )
+{
+
+}
+
+
+Mat_Vec normalize( Mat_Vec mat_vec )
+{
+
+}
+
+
+Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
+{
+
+}
+
+
+Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
+{
+
+}
