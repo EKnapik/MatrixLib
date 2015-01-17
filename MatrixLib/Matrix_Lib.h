@@ -74,7 +74,7 @@ double det( Mat matrix );
 * multiply each part by the double scaleAmount
 * returns that Matrix_Vector Struct
 **/
-Mat_Vec scale( Mat_Vec matrix, double scaleAmount );
+Mat_Vec scale( Mat_Vec mat_vec, double scaleAmount );
 
 /**
 * given a matrix in the Matrix_Vector Struct format will return the inverse

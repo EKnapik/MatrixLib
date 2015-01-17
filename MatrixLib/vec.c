@@ -128,3 +128,9 @@ Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
 {
 
 }
+
+
+Mat_Vec scale( Mat_Vec mat_vec , double scaleAmount )
+{
+
+}
