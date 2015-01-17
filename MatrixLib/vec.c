@@ -13,6 +13,9 @@
 // Internal Library Includes
 #include "Matrix_Lib.h"
 
+// Personal Defines
+#define PI 3.14159265
+
 
 Vec mkVec( double data[] )
 {
@@ -95,9 +98,17 @@ double length( Vec vector )
 
 
 // uv = ||u|| ||v|| cos(theta);
+// 
 double angle( Vec vec1, Vec vec2 )
 {
+	double answer, val;
 
+	val = 180.0 / PI;
+
+	answer = dotProd( vec1, vec2 ) / length( vec1 ) / length( vec2 );
+	answer = acos( answer ) * val;
+
+	return answer;
 }
 
 
