@@ -6,7 +6,7 @@
 
 
 // External Library Includes
-
+#include <math.h>
 
 
 
@@ -53,9 +53,41 @@ Vec project( Vec vector1, Vec vector2 )
 
 double dotProd( Vec vec1, Vec vec2 )
 {
+	double answer = 0;
+	if( vec1.type == vec2.type == VEC2 )
+	{
+		answer = vec1.x * vec2.x;
+		answer = answer + ( vec1.y * vec2.y );
+	}
+	else if( vec1.type == vec2.type == VEC3 )
+	{
+		answer = vec1.x * vec2.x;
+		answer = answer + ( vec1.y * vec2.y );
+		answer = answer + ( vec1.z * vec2.z );
+	}
+	else if( vec1.type == vec2.type == VEC4 )
+	{
+		answer = vec1.x * vec2.x;
+		answer = answer + ( vec1.y * vec2.y );
+		answer = answer + ( vec1.z * vec2.z );
+		answer = answer + ( vec1.w * vec2.w );
+	}
+	else
+	{
+		answer = NULL;
+	}
 
+	return answer;
 }
 
+
+double length( Vec vector )
+{
+	double length = 0;
+	length = dotProd( vector, vector );
+
+	return length;
+}
 
 double angle( Vec vec1, Vec vec2 )
 {

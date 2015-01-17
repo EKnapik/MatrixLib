@@ -124,6 +124,14 @@ double angle( Vec vector1, Vec vector2 );
 **/
 double dist( Vec vector1, Vec vector2 );
 
+
+/**
+* returns the length of a vector
+* returns a double
+**/
+double length( Vec vector );
+
+
 /**
 * given a matrix or a vector as notated by the Mat_Vec notation. and returns
 * that vector or matrix normalized.
