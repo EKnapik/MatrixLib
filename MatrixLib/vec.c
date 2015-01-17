@@ -45,6 +45,7 @@ Vec mkVec( double data[] )
 }
 
 
+// project v onto u where v is vector2 and u is vector1
 Vec project( Vec vector1, Vec vector2 )
 {
 
@@ -74,6 +75,7 @@ double dotProd( Vec vec1, Vec vec2 )
 	}
 	else
 	{
+		perror( "Could not find the dot product between the vectors\n" );
 		answer = NULL;
 	}
 
@@ -84,18 +86,16 @@ double dotProd( Vec vec1, Vec vec2 )
 double length( Vec vector )
 {
 	double length = 0;
+
 	length = dotProd( vector, vector );
+	length = sqrt( length );
 
 	return length;
 }
 
+
+// uv = ||u|| ||v|| cos(theta);
 double angle( Vec vec1, Vec vec2 )
-{
-
-}
-
-
-double dist( Vec vec1, Vec vec2 )
 {
 
 }

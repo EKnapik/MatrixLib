@@ -109,6 +109,7 @@ Mat transpose( Mat matrix );
 * This returns a new vector that is the projection of vector2 onto vector1.
 * this will make a new Matrix_Vector Struct and return the projection
 * return Matrix_Vector Struct
+* project v onto u where v is vector2 and u is vector1
 **/
 Vec project( Vec vector1, Vec vector2 );
 
@@ -117,12 +118,6 @@ Vec project( Vec vector1, Vec vector2 );
 * retuns a double that is the amount of degrees between two vectors
 **/
 double angle( Vec vector1, Vec vector2 );
-
-/**
-* retuns the double value that is the distance between two vectors
-* returns a double
-**/
-double dist( Vec vector1, Vec vector2 );
 
 
 /**
