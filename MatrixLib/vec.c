@@ -130,7 +130,36 @@ Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
 }
 
 
-Mat_Vec scale( Mat_Vec mat_vec , double scaleAmount )
+Mat_Vec scale( Mat_Vec mat_vec, double scaleAmount )
 {
+	if( mat_vec.type == VEC2 )
+	{
 
+	}
+	else if( mat_vec.type == VEC3 )
+	{
+
+	}
+	else if( mat_vec.type == VEC4 )
+	{
+
+	}
+	else if( mat_vec.type == MAT2 )
+	{
+
+	}
+	else if( mat_vec.type == MAT3 )
+	{
+
+	}
+	else if( mat_vec.type == MAT4 )
+	{
+
+	}
+	else
+	{
+		perror( "Unable to scale the matrix or vector passed in\n" );
+	}
+
+	return mat_vec;
 }
