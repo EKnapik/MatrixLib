@@ -120,11 +120,43 @@ Mat_Vec normalize( Mat_Vec mat_vec )
 
 Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 {
+	
 	if( matrix.type != MAT2 || matrix.type != MAT3 || matrix.type != MAT4 )
 	{
 		perror( "The first param was not a matrix\n" );
 		return NULL;
 	}
+
+	if( matrix.type == MAT2 && mat_vec.type == VEC2 )
+	{
+
+	}
+	else if( matrix.type == MAT2 && mat_vec.type == MAT2 )
+	{
+
+	}
+	else if( matrix.type == MAT3 && mat_vec.type == VEC3 )
+	{
+
+	}
+	else if( matrix.type == MAT3 && mat_vec.type == MAT3 )
+	{
+
+	}
+	else if( matrix.type == MAT4 && mat_vec.type == VEC4 )
+	{
+
+	}
+	else if( matrix.type == MAT4 && mat_vec.type == MAT4 )
+	{
+
+	}
+	else
+	{
+		perror( "Unable to multiply the given params returning NULL\n" );
+		return NULL;
+	}
+
 }
 
 
