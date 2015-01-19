@@ -120,7 +120,11 @@ Mat_Vec normalize( Mat_Vec mat_vec )
 
 Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 {
-
+	if( matrix.type != MAT2 || matrix.type != MAT3 || matrix.type != MAT4 )
+	{
+		perror( "The first param was not a matrix\n" );
+		return NULL;
+	}
 }
 
 
@@ -134,27 +138,59 @@ Mat_Vec scale( Mat_Vec mat_vec, double scaleAmount )
 {
 	if( mat_vec.type == VEC2 )
 	{
-
+		mat_vec.x = mat_vec.x * scaleAmount;
+		mat_vec.y = mat_vec.y * scaleAmount;
 	}
 	else if( mat_vec.type == VEC3 )
 	{
-
+		mat_vec.x = mat_vec.x * scaleAmount;
+		mat_vec.y = mat_vec.y * scaleAmount;
+		mat_vec.z = mat_vec.z * scaleAmount;
 	}
 	else if( mat_vec.type == VEC4 )
 	{
-
+		mat_vec.x = mat_vec.x * scaleAmount;
+		mat_vec.y = mat_vec.y * scaleAmount;
+		mat_vec.z = mat_vec.z * scaleAmount;
+		mat_vec.w = mat_vec.w * scaleAmount;
 	}
 	else if( mat_vec.type == MAT2 )
 	{
-
+		mat_vec->data[0] = mat_vec->data[0] * scaleAmount;
+		mat_vec->data[1] = mat_vec->data[1] * scaleAmount;
+		mat_vec->data[2] = mat_vec->data[2] * scaleAmount;
+		mat_vec->data[3] = mat_vec->data[3] * scaleAmount;
 	}
 	else if( mat_vec.type == MAT3 )
 	{
-
+		mat_vec->data[0] = mat_vec->data[0] * scaleAmount;
+		mat_vec->data[1] = mat_vec->data[1] * scaleAmount;
+		mat_vec->data[2] = mat_vec->data[2] * scaleAmount;
+		mat_vec->data[3] = mat_vec->data[3] * scaleAmount;
+		mat_vec->data[4] = mat_vec->data[4] * scaleAmount;
+		mat_vec->data[5] = mat_vec->data[5] * scaleAmount;
+		mat_vec->data[6] = mat_vec->data[6] * scaleAmount;
+		mat_vec->data[7] = mat_vec->data[7] * scaleAmount;
+		mat_vec->data[8] = mat_vec->data[8] * scaleAmount;
 	}
 	else if( mat_vec.type == MAT4 )
 	{
-
+		mat_vec->data[0] = mat_vec->data[0] * scaleAmount;
+		mat_vec->data[1] = mat_vec->data[1] * scaleAmount;
+		mat_vec->data[2] = mat_vec->data[2] * scaleAmount;
+		mat_vec->data[3] = mat_vec->data[3] * scaleAmount;
+		mat_vec->data[4] = mat_vec->data[4] * scaleAmount;
+		mat_vec->data[5] = mat_vec->data[5] * scaleAmount;
+		mat_vec->data[6] = mat_vec->data[6] * scaleAmount;
+		mat_vec->data[7] = mat_vec->data[7] * scaleAmount;
+		mat_vec->data[8] = mat_vec->data[8] * scaleAmount;
+		mat_vec->data[9] = mat_vec->data[9] * scaleAmount;
+		mat_vec->data[10] = mat_vec->data[10] * scaleAmount;
+		mat_vec->data[11] = mat_vec->data[11] * scaleAmount;
+		mat_vec->data[12] = mat_vec->data[12] * scaleAmount;
+		mat_vec->data[13] = mat_vec->data[13] * scaleAmount;
+		mat_vec->data[14] = mat_vec->data[14] * scaleAmount;
+		mat_vec->data[15] = mat_vec->data[15] * scaleAmount;
 	}
 	else
 	{
