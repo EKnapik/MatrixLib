@@ -127,26 +127,34 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 		return NULL;
 	}
 
+	Mat returnMat_Vec;
+	// 2x2 * 2x1
 	if( matrix.type == MAT2 && mat_vec.type == VEC2 )
 	{
-
+		returnMat_Vec = mkVec( [ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y)), 
+			((matrix->data[2] * mat_vec.x) + (matrix->data[3] * mat_vec.y)) ] );
 	}
+	// 2x2 * 2x2
 	else if( matrix.type == MAT2 && mat_vec.type == MAT2 )
 	{
 
 	}
+	// 3x3 * 3x1
 	else if( matrix.type == MAT3 && mat_vec.type == VEC3 )
 	{
 
 	}
+	// 3x3 * 3x3
 	else if( matrix.type == MAT3 && mat_vec.type == MAT3 )
 	{
 
 	}
+	// 4x4 * 4x1
 	else if( matrix.type == MAT4 && mat_vec.type == VEC4 )
 	{
 
 	}
+	// 4x4 * 4x4
 	else if( matrix.type == MAT4 && mat_vec.type == MAT4 )
 	{
 
@@ -154,9 +162,10 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 	else
 	{
 		perror( "Unable to multiply the given params returning NULL\n" );
-		return NULL;
+		returnMat_Vec = NULL;
 	}
-
+	
+	return returnMat_Vec;
 }
 
 
