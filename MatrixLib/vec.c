@@ -173,7 +173,22 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 	// 4x4 * 4x4
 	else if( matrix.type == MAT4 && mat_vec.type == MAT4 )
 	{
-
+		returnMat_Vec = mkMat([ ((matrix->data[0] * mat_vec->data[0] ) + (matrix->data[1] * mat_vec->data[4]) + (matrix->data[2] * mat_vec->data[8]) + (matrix->data[3] * mat_vec->data[12])), 
+			((matrix->data[0] * mat_vec->data[1] ) + (matrix->data[1] * mat_vec->data[5]) + (matrix->data[2] * mat_vec->data[9]) + (matrix->data[3] * mat_vec->data[13])),
+			((matrix->data[0] * mat_vec->data[2] ) + (matrix->data[1] * mat_vec->data[6]) + (matrix->data[2] * mat_vec->data[10]) + (matrix->data[3] * mat_vec->data[14])),
+			((matrix->data[0] * mat_vec->data[3] ) + (matrix->data[1] * mat_vec->data[7]) + (matrix->data[2] * mat_vec->data[11]) + (matrix->data[3] * mat_vec->data[15])),
+			((matrix->data[4] * mat_vec->data[0] ) + (matrix->data[5] * mat_vec->data[4]) + (matrix->data[6] * mat_vec->data[8]) + (matrix->data[7] * mat_vec->data[12])),
+			((matrix->data[4] * mat_vec->data[1] ) + (matrix->data[5] * mat_vec->data[5]) + (matrix->data[6] * mat_vec->data[9]) + (matrix->data[7] * mat_vec->data[13])),
+			((matrix->data[4] * mat_vec->data[2] ) + (matrix->data[5] * mat_vec->data[6]) + (matrix->data[6] * mat_vec->data[10]) + (matrix->data[7] * mat_vec->data[14])),
+			((matrix->data[4] * mat_vec->data[3] ) + (matrix->data[5] * mat_vec->data[7]) + (matrix->data[6] * mat_vec->data[11]) + (matrix->data[7] * mat_vec->data[15])),
+			((matrix->data[8] * mat_vec->data[0] ) + (matrix->data[9] * mat_vec->data[4]) + (matrix->data[10] * mat_vec->data[8]) + (matrix->data[11] * mat_vec->data[12])),
+			((matrix->data[8] * mat_vec->data[1] ) + (matrix->data[9] * mat_vec->data[5]) + (matrix->data[10] * mat_vec->data[9]) + (matrix->data[11] * mat_vec->data[13])),
+			((matrix->data[8] * mat_vec->data[2] ) + (matrix->data[9] * mat_vec->data[6]) + (matrix->data[10] * mat_vec->data[10]) + (matrix->data[11] * mat_vec->data[14])),
+			((matrix->data[8] * mat_vec->data[3] ) + (matrix->data[9] * mat_vec->data[7]) + (matrix->data[10] * mat_vec->data[11]) + (matrix->data[11] * mat_vec->data[15])),
+			((matrix->data[12] * mat_vec->data[0] ) + (matrix->data[13] * mat_vec->data[4]) + (matrix->data[14] * mat_vec->data[8]) + (matrix->data[15] * mat_vec->data[12])),
+			((matrix->data[12] * mat_vec->data[1] ) + (matrix->data[13] * mat_vec->data[5]) + (matrix->data[14] * mat_vec->data[9]) + (matrix->data[15] * mat_vec->data[13])),
+			((matrix->data[12] * mat_vec->data[2] ) + (matrix->data[13] * mat_vec->data[6]) + (matrix->data[14] * mat_vec->data[10]) + (matrix->data[15] * mat_vec->data[14])),
+			((matrix->data[12] * mat_vec->data[3] ) + (matrix->data[13] * mat_vec->data[7]) + (matrix->data[14] * mat_vec->data[11]) + (matrix->data[15] * mat_vec->data[15])) ]);
 	}
 	else
 	{
