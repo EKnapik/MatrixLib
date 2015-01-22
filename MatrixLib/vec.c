@@ -152,7 +152,15 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 	// 3x3 * 3x3
 	else if( matrix.type == MAT3 && mat_vec.type == MAT3 )
 	{
-
+		returnMat_Vec = mkMat([ ((matrix->data[0] * mat_vec->data[0] ) + (matrix->data[1] * mat_vec->data[3]) + (matrix->data[2] * mat_vec->data[6])), 
+			((matrix->data[0] * mat_vec->data[1] ) + (matrix->data[1] * mat_vec->data[4]) + (matrix->data[2] * mat_vec->data[7])),
+			((matrix->data[0] * mat_vec->data[2] ) + (matrix->data[1] * mat_vec->data[5]) + (matrix->data[2] * mat_vec->data[8])),
+			((matrix->data[3] * mat_vec->data[0] ) + (matrix->data[3] * mat_vec->data[3]) + (matrix->data[4] * mat_vec->data[6])),
+			((matrix->data[3] * mat_vec->data[1] ) + (matrix->data[3] * mat_vec->data[4]) + (matrix->data[4] * mat_vec->data[7])),
+			((matrix->data[3] * mat_vec->data[2] ) + (matrix->data[3] * mat_vec->data[5]) + (matrix->data[4] * mat_vec->data[8])),
+			((matrix->data[6] * mat_vec->data[0] ) + (matrix->data[7] * mat_vec->data[3]) + (matrix->data[8] * mat_vec->data[6])),
+			((matrix->data[6] * mat_vec->data[1] ) + (matrix->data[7] * mat_vec->data[4]) + (matrix->data[8] * mat_vec->data[7])),
+			((matrix->data[6] * mat_vec->data[2] ) + (matrix->data[7] * mat_vec->data[5]) + (matrix->data[8] * mat_vec->data[8])) ]);
 	}
 	// 4x4 * 4x1
 	else if( matrix.type == MAT4 && mat_vec.type == VEC4 )
