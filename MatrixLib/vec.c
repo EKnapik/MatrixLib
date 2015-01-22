@@ -131,20 +131,23 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 	// 2x2 * 2x1
 	if( matrix.type == MAT2 && mat_vec.type == VEC2 )
 	{
-		returnMat_Vec = mkVec( [ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y)), 
-			((matrix->data[2] * mat_vec.x) + (matrix->data[3] * mat_vec.y)) ] );
+		returnMat_Vec = mkVec([ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y)), 
+			((matrix->data[2] * mat_vec.x) + (matrix->data[3] * mat_vec.y)) ]);
 	}
 	// 2x2 * 2x2
 	else if( matrix.type == MAT2 && mat_vec.type == MAT2 )
 	{
-
+		returnMat_Vec = mkMat([ ((matrix->data[0] * mat_vec->data[0] ) + (matrix->data[1] * mat_vec->data[2])), 
+			((matrix->data[0] * mat_vec->data[1]) + (matrix->data[1] * mat_vec->data[3])),
+			((matrix->data[1] * mat_vec->data[0]) + (matrix->data[3] * mat_vec->data[2])),
+			((matrix->data[1] * mat_vec->data[1]) + (matrix->data[3] * mat_vec->data[3])) ]);
 	}
 	// 3x3 * 3x1
 	else if( matrix.type == MAT3 && mat_vec.type == VEC3 )
 	{
-		returnMat_Vec = mkVec( [ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y) + (matrix->data[2] * mat_vec.z)),
+		returnMat_Vec = mkVec([ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y) + (matrix->data[2] * mat_vec.z)),
 			((matrix->data[3] * mat_vec.x) + (matrix->data[4] * mat_vec.y) + (matrix->data[5] * mat_vec.z)),
-			((matrix->data[6] * mat_vec.x) + (matrix->data[7] * mat_vec.y) + (matrix->data[8] * mat_vec.z)) ])
+			((matrix->data[6] * mat_vec.x) + (matrix->data[7] * mat_vec.y) + (matrix->data[8] * mat_vec.z)) ]);
 	}
 	// 3x3 * 3x3
 	else if( matrix.type == MAT3 && mat_vec.type == MAT3 )
@@ -154,10 +157,10 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 	// 4x4 * 4x1
 	else if( matrix.type == MAT4 && mat_vec.type == VEC4 )
 	{
-		returnMat_Vec = mkVec( [ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y) + (matrix->data[2] * mat_vec.z) + (matrix->data[3] * mat_vec.z)),
+		returnMat_Vec = mkVec([ ((matrix->data[0] * mat_vec.x) + (matrix->data[1] * mat_vec.y) + (matrix->data[2] * mat_vec.z) + (matrix->data[3] * mat_vec.z)),
 			((matrix->data[4] * mat_vec.x) + (matrix->data[5] * mat_vec.y) + (matrix->data[6] * mat_vec.z) + (matrix->data[7] * mat_vec.z)),
 			((matrix->data[8] * mat_vec.x) + (matrix->data[9] * mat_vec.y) + (matrix->data[10] * mat_vec.z) + (matrix->data[11] * mat_vec.z)),
-			((matrix->data[12] * mat_vec.x) + (matrix->data[13] * mat_vec.y) + (matrix->data[14] * mat_vec.z) + (matrix->data[15] * mat_vec.z)) ])
+			((matrix->data[12] * mat_vec.x) + (matrix->data[13] * mat_vec.y) + (matrix->data[14] * mat_vec.z) + (matrix->data[15] * mat_vec.z)) ]);
 	}
 	// 4x4 * 4x4
 	else if( matrix.type == MAT4 && mat_vec.type == MAT4 )
