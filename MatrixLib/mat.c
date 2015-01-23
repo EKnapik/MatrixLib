@@ -58,7 +58,10 @@ Mat mkMat( double data[] )
 
 void destroyMat( Mat matrix )
 {
-	free( matrix.data );
+	if( matrix != NULL )
+	{
+		free( matrix.data );
+	}
 	matrix = NULL;
 	return;
 }
@@ -138,9 +141,17 @@ Mat inverse( Mat matrix )
 }
 
 // This relies on the matrix multiplication function
+// I have a fear that there is a massive memory leak here because I loose a matrix
+// Every time I iteratate through the for loop.
 Mat pow( Mat matrix, int power )
 {
+	Mat returnMat = matrix;
+	for( int i = 1; i < power; i++ )
+	{
+		returnMat = multi( returnMat, matrix );
+	}
 
+	retun returnMat;
 }
 
 
