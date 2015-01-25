@@ -112,9 +112,30 @@ double angle( Vec vec1, Vec vec2 )
 }
 
 
-Mat_Vec normalize( Mat_Vec mat_vec )
+Vec normalize( Vec vec )
 {
+	Vec returnVec;
+	double vecLen = length( vec );
 
+	if( vec.type == VEC2 )
+	{
+		returnVec = mkVec([ (vec.x / vecLen), (vec.y / vecLen) ]);
+	}
+	else if( vec.type == VEC3 )
+	{
+		returnVec = mkVec([ (vec.x / vecLen), (vec.y / vecLen), (vec.z / vecLen) ]);
+	}
+	else if( vec.type == VEC4 )
+	{
+		returnVec = mkVec([ (vec.x / vecLen), (vec.y / vecLen), (vec.z / vecLen), (vec.w / vecLen) ]);
+	}
+	else
+	{
+		perror( "Could not normalize the vector\n" );
+		returnVec = NULL;
+	}
+
+	return returnVec;
 }
 
 

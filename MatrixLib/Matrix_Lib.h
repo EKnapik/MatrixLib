@@ -132,7 +132,7 @@ double length( Vec vector );
 * that vector or matrix normalized.
 * retuns a Matrix_Vector Struct
 **/
-Mat_Vec normalize( Mat_Vec mat_vec );
+Vec normalize( Vec vec );
 
 /**
 * if valid will do the matrix multiplication of two matrixes and can do the
