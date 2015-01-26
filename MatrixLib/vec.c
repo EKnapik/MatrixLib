@@ -244,27 +244,33 @@ Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
 
 	if( mat_vec1.type == VEC2 && mat_vec2.type == VEC2 )
 	{
-
+		returnMat_Vec = mkVec([ (mat_vec1.x + mat_vec2.x), (mat_vec1.y + mat_vec2.y) ]);
 	}
 	else if( mat_vec1.type == VEC3 && mat_vec2.type == VEC3 )
 	{
-
+		returnMat_Vec = mkVec([ (mat_vec1.x + mat_vec2.x), (mat_vec1.y + mat_vec2.y), (mat_vec1.z + mat_vec2.z) ]);
 	}
 	else if( mat_vec1.type == VEC4 && mat_vec2.type == VEC4 )
 	{
-
+		returnMat_Vec = mkVec([ (mat_vec1.x + mat_vec2.x), (mat_vec1.y + mat_vec2.y), (mat_vec1.z + mat_vec2.z), (mat_vec1.w + mat_vec2.w) ]);
 	}
 	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
 	{
-
+		returnMat_Vec = mkMat([ (mat_vec1->data[0] + mat_vec2->data[0]), (mat_vec1->data[1] + mat_vec2->data[1]),
+							(mat_vec1->data[2] + mat_vec2->data[2]), (mat_vec1->data[3] + mat_vec2->data[3]) ]);
 	}
 	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
 	{
-
+		returnMat_Vec = mkMat([ (mat_vec1->data[0] + mat_vec2->data[0]), (mat_vec1->data[1] + mat_vec2->data[1]), (mat_vec1->data[2] + mat_vec2->data[2]),
+							(mat_vec1->data[3] + mat_vec2->data[3]), (mat_vec1->data[4] + mat_vec2->data[4]), (mat_vec1->data[5] + mat_vec2->data[5]),
+							(mat_vec1->data[6] + mat_vec2->data[6]), (mat_vec1->data[7] + mat_vec2->data[7]), (mat_vec1->data[8] + mat_vec2->data[8]) ]);
 	}
 	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
 	{
-
+		returnMat_Vec = mkMat([ (mat_vec1->data[0] + mat_vec2->data[0]), (mat_vec1->data[1] + mat_vec2->data[1]), (mat_vec1->data[2] + mat_vec2->data[2]), (mat_vec1->data[3] + mat_vec2->data[3]),
+							(mat_vec1->data[4] + mat_vec2->data[4]), (mat_vec1->data[5] + mat_vec2->data[5]), (mat_vec1->data[6] + mat_vec2->data[6]), (mat_vec1->data[7] + mat_vec2->data[7]),
+							(mat_vec1->data[8] + mat_vec2->data[8]), (mat_vec1->data[9] + mat_vec2->data[9]), (mat_vec1->data[10] + mat_vec2->data[10]), (mat_vec1->data[11] + mat_vec2->data[11]),
+							(mat_vec1->data[12] + mat_vec2->data[12]), (mat_vec1->data[13] + mat_vec2->data[13]), (mat_vec1->data[14] + mat_vec2->data[14]), (mat_vec1->data[15] + mat_vec2->data[15]) ]);
 	}
 	else
 	{
