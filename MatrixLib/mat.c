@@ -137,7 +137,13 @@ double det( Mat matrix )
 // This will rely on the determinate function
 Mat inverse( Mat matrix )
 {
+	if( det(matrix) == 0 )
+	{
+		perror( "The matrix is not invertible, returning NULL\n" );
+		return NULL;
+	}
 
+	
 }
 
 // This relies on the matrix multiplication function
