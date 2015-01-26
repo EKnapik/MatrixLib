@@ -240,7 +240,39 @@ Mat_Vec multi( Mat matrix, Mat_Vec mat_vec )
 
 Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
 {
+	Mat_Vec returnMat_Vec;
 
+	if( mat_vec1.type == VEC2 && mat_vec2.type == VEC2 )
+	{
+
+	}
+	else if( mat_vec1.type == VEC3 && mat_vec2.type == VEC3 )
+	{
+
+	}
+	else if( mat_vec1.type == VEC4 && mat_vec2.type == VEC4 )
+	{
+
+	}
+	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
+	{
+
+	}
+	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
+	{
+
+	}
+	else if( mat_vec1.type == MAT2 && mat_vec2.type == MAT2 )
+	{
+
+	}
+	else
+	{
+		perror( "Could not add the matricies or vectors together return NULL\n" );
+		return NULL;
+	}
+
+	return returnMat_Vec;
 }
 
 
