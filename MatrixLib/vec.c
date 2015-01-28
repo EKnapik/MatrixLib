@@ -48,23 +48,23 @@ Vec mkVec( double data[] )
 }
 
 
-// project v onto u where v is vector2 and u is vector1
+// project Vector 1 onto vector 2
 Vec project( Vec vector1, Vec vector2 )
 {
-	double scaleAmount = dotProd( vector1, vector2 ) / dotProd( vector1, vector1 );
+	double scaleAmount = dotProd( vector1, vector2 ) / dotProd( vector2, vector2 );
 	Vec returnVec;
 
-	if( vector1.type == VEC2 )
+	if( vector2.type == VEC2 )
 	{
-		returnVec = mkVec([ vector1.x, vector1.y ]);
+		returnVec = mkVec([ vector2.x, vector2.y ]);
 	}
-	else if( vector1.type == VEC3 )
+	else if( vector2.type == VEC3 )
 	{
-		returnVec = mkVec([ vector1.x, vector1.y, vector1.z ]);
+		returnVec = mkVec([ vector2.x, vector2.y, vector2.z ]);
 	}
-	else if( vector1.type == VEC4 )
+	else if( vector2.type == VEC4 )
 	{
-		returnVec = mkVec([ vector1.x, vector1.y, vector1.z, vector1.w ]);
+		returnVec = mkVec([ vector2.x, vector2.y, vector2.z, vector2.w ]);
 	}
 	returnVec = scale( returnVec, scaleAmount );
 

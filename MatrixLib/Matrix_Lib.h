@@ -106,10 +106,10 @@ Mat4 rotate( Mat4 matrix, char axis, double degrees );
 Mat transpose( Mat matrix );
 
 /**
-* This returns a new vector that is the projection of vector2 onto vector1.
+* This returns a new vector that is the projection of Vector 1 onto vector 2
 * this will make a new Matrix_Vector Struct and return the projection
 * return Matrix_Vector Struct
-* project v onto u where v is vector2 and u is vector1
+* // project Vector 1 onto vector 2
 **/
 Vec project( Vec vector1, Vec vector2 );
 
