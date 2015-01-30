@@ -163,7 +163,131 @@ Mat pow( Mat matrix, int power )
 
 Mat4 rotate( Mat_Vec mat_vec, char axis, double degrees )
 {
+	if( mat_vec.type == VEC2 )
+	{
+		if( axis == 'x' )
+		{
 
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}
+	}
+	else if( mat_vec.type == VEC3 )
+	{
+		if( axis == 'x' )
+		{
+
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}
+	}
+	else if( mat_vec.type == VEC4 )
+	{
+		if( axis == 'x' )
+		{
+
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}
+	}
+	else if( mat_vec.type == MAT2 )
+	{
+		if( axis == 'x' )
+		{
+
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}	
+	}
+	else if( mat_vec.type == MAT3 )
+	{
+		if( axis == 'x' )
+		{
+
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}
+	}
+	else if( mat_vec.type == MAT4 )
+	{
+		if( axis == 'x' )
+		{
+
+		}
+		else if( axis == 'y' )
+		{
+
+		}
+		else if( axis == 'z' )
+		{
+
+		}
+		else
+		{
+			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+			return NULL;
+		}
+	}
+	else
+	{
+		perror( "Could not rotate the matrix or vector provided returning NULL\n" );
+		return NULL;
+	}
 }
 
 
