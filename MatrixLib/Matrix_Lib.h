@@ -93,10 +93,10 @@ Mat pow( Mat matrix, int power );
 /**
 * This will rotate a matrix by so many degrees according to the char passed in
 * takes char x, y, or z and degrees 0 -  360. Then rotates the matrix accordingly
-* Matrix must be a Mat4
+* Matrix must be a Mat4. This can also rotate vectors aswell.
 * returns Mat4 a new Mat
 **/
-Mat4 rotate( Mat4 matrix, char axis, double degrees );
+Mat4 rotate( Mat_Vec mat_vec, char axis, double degrees );
 
 /**
 * given a matrix that is a 2x2 or 3x3 or 4x4 will return the transpose of that matrix

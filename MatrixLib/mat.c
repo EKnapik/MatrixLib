@@ -161,7 +161,7 @@ Mat pow( Mat matrix, int power )
 }
 
 
-Mat4 rotate( Mat4 matrix, char axis, double degrees )
+Mat4 rotate( Mat_Vec mat_vec, char axis, double degrees )
 {
 
 }
