@@ -160,5 +160,13 @@ defines. The two dimmensional array then stores the level of scope that the func
 so when a I move up and down function scope I execute my own internal "go to" to go to a different
 level in the array of what variables I will have and what funtions to execute.
 
+The idle relies on a form of go to statements for things that have already been executed
+Handles parenthesis to evaluate statements that are temporary by having a form of temporary variables,
+	much like how a CPU has temporary registers, I have an array to hold temp variables that are only
+	for the processing of values line by line
+Much like a low level language or assembly level language I am only doing one instruction at a time,
+	walking my way through the program executing commands when appropriate "compiling" as the code
+	is written.
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
