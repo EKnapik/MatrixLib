@@ -168,6 +168,15 @@ double dotProd( Vec vec1, Vec vec2 );
 **/
 VEC3 crossProd( VEC3 vec1, VEC3 vec2 );
 
+
+/**
+* This makes a VEC3 a VEC4
+* returns the vector passed in that is now of type vec4
+*
+**/
+VEC4 vec3ToVec4( VEC3 vector );
+
+
 /**
 * returns an identity matrix that is the appropriate size
 * returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
