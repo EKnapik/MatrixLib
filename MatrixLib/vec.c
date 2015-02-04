@@ -102,6 +102,25 @@ double dotProd( Vec vec1, Vec vec2 )
 	return answer;
 }
 
+VEC3 crossProd( VEC3 vec1, VEC3 vec2 )
+{
+
+}
+
+
+VEC4 vec3ToVec4( VEC3 vector )
+{
+	if( vector.type == VEC3 )
+	{
+		vector.type = VEC4;
+		vector.w = 0;
+	}
+	else
+	{
+		perror( "Vector is not of type VEC3\n" );
+		return NULL
+	}
+}
 
 double length( Vec vector )
 {

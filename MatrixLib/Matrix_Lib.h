@@ -161,6 +161,14 @@ void print( Mat_Vec mat_vec );
 double dotProd( Vec vec1, Vec vec2 );
 
 /**
+* this will return the cross product of the two vectors.
+* this works as vec1 cross vec2 or (vec1 x vec2).
+* this creates a new vector and returns it, this is the vector that is
+* the vector orthogonal to both vectors.
+**/
+VEC3 crossProd( VEC3 vec1, VEC3 vec2 );
+
+/**
 * returns an identity matrix that is the appropriate size
 * returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
 **/
