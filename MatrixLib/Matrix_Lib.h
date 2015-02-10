@@ -25,7 +25,7 @@ struct Matrix_Vector
 	double w;
 	double *data;
 	Mat_Vec_Type type;
-}
+};
 
 // Typedef all the ways you can write the enums into the struct Matrix_Vector
 // These are all refrences to the same struct, this will just be for convenience when
