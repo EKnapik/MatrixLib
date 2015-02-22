@@ -142,8 +142,6 @@ Mat inverse( Mat matrix )
 		perror( "The matrix is not invertible, returning NULL\n" );
 		return NULL;
 	}
-
-	
 }
 
 // This relies on the matrix multiplication function
@@ -165,18 +163,7 @@ Mat4 rotate( Mat_Vec mat_vec, char axis, double degrees )
 {
 	if( mat_vec.type == VEC2 )
 	{
-		if( axis == 'x' )
-		{
-
-		}
-		else if( axis == 'y' )
-		{
-
-		}
-		else if( axis == 'z' )
-		{
-
-		}
+		
 		else
 		{
 			perror( "Could not rotate the matrix or vector provided returning NULL\n" );
