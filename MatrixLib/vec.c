@@ -102,9 +102,9 @@ double dotProd( Vec vec1, Vec vec2 )
 	return answer;
 }
 
-VEC3 crossProd( VEC3 vec1, VEC3 vec2 )
+VEC3 crossProd( Vec3 vec1, Vec3 vec2 )
 {
-	VEC3 returnVec = NULL;
+	Vec3 returnVec = NULL;
 
 	if( vec1.type == vec2.type == VEC3 )
 	{
@@ -121,7 +121,7 @@ VEC3 crossProd( VEC3 vec1, VEC3 vec2 )
 }
 
 
-VEC4 vec3ToVec4( VEC3 vector )
+VEC4 vec3ToVec4( Vec3 vector )
 {
 	if( vector.type == VEC3 )
 	{
@@ -307,7 +307,7 @@ Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 )
 	else
 	{
 		perror( "Could not add the matricies or vectors together return NULL\n" );
-		return NULL;
+		returnMat_Vec = NULL;
 	}
 
 	return returnMat_Vec;

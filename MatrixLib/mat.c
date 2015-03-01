@@ -23,28 +23,28 @@ Mat mkMat( double data[] )
 	if( numElements == 4 )
 	{
 		matrix.type = MAT2;
-		matrix->data = malloc( sizeof( double ) * 4 );
+		matrix.data = malloc( sizeof( double ) * 4 );
 		for( int i = 0; i < 4; i++ )
 		{
-			matrix->data[i] = data[i];
+			matrix.data[i] = data[i];
 		}
 	}
 	else if( numElements == 9 )
 	{
 		matrix.type = MAT3;
-		matrix->data = malloc( sizeof( double ) * 9 );
+		matrix.data = malloc( sizeof( double ) * 9 );
 		for( int i = 0; i < 9; i++ )
 		{
-			matrix->data[i] = data[i];
+			matrix.data[i] = data[i];
 		}
 	}
 	else if( numElements == 16 )
 	{
 		matrix.type = MAT4;
-		matrix->data = malloc( sizeof( double ) * 16 );
+		matrix.data = malloc( sizeof( double ) * 16 );
 		for( int i = 0; i < 16; i++ )
 		{
-			matrix->data[i] = data[i];
+			matrix.data[i] = data[i];
 		}
 	}
 	else
@@ -74,8 +74,8 @@ double det( Mat matrix )
 	{
 		double val1, val2;
 
-		val1 = matrix->data[0] * matrix->data[3];
-		val2 = matrix->data[1] * matrix->data[2];
+		val1 = matrix.data[0] * matrix.data[3];
+		val2 = matrix.data[1] * matrix.data[2];
 
 		determinate = val1 - val2;
 	}
@@ -83,15 +83,15 @@ double det( Mat matrix )
 	{
 		double val1, val2, val3;
 
-		val1 = matrix->data[0] * matrix->data[4] * matrix->data[8];
-		val2 = matrix->data[1] * matrix->data[5] * matrix->data[6];
-		val3 = matrix->data[2] * matrix->data[3] * matrix->data[7];
+		val1 = matrix.data[0] * matrix.data[4] * matrix.data[8];
+		val2 = matrix.data[1] * matrix.data[5] * matrix.data[6];
+		val3 = matrix.data[2] * matrix.data[3] * matrix.data[7];
 
 		determinate = val1 + val2 + val3;
 
-		val1 = matrix->data[2] * matrix->data[4] * matrix->data[6];
-		val2 = matrix->data[0] * matrix->data[5] * matrix->data[7];
-		val3 = matrix->data[1] * matrix->data[3] * matrix->data[8];
+		val1 = matrix.data[2] * matrix.data[4] * matrix.data[6];
+		val2 = matrix.data[0] * matrix.data[5] * matrix.data[7];
+		val3 = matrix.data[1] * matrix.data[3] * matrix.data[8];
 
 		determinate = determinate - val1 - val2 - val3;
 	}
@@ -99,23 +99,23 @@ double det( Mat matrix )
 	{
 		Mat matrix1, matrix2, matrix3, matrix4;
 
-		matrix1 = mkMat( [ matrix->data[5], matrix->data[6], matrix->data[7],
-							matrix->data[9], matrix->data[10], matrix->data[11],
-							matrix->data[13], matrix->data[14], matrix->data[15] ] );
+		matrix1 = mkMat( [ matrix.data[5], matrix.data[6], matrix.data[7],
+							matrix.data[9], matrix.data[10], matrix.data[11],
+							matrix.data[13], matrix.data[14], matrix.data[15] ] );
 
-		matrix2 = mkMat( [ matrix->data[4], matrix->data[6], matrix->data[7],
-							matrix->data[8], matrix->data[10], matrix->data[11],
-							matrix->data[12], matrix->data[14], matrix->data[15] ] );
+		matrix2 = mkMat( [ matrix.data[4], matrix.data[6], matrix.data[7],
+							matrix.data[8], matrix.data[10], matrix.data[11],
+							matrix.data[12], matrix.data[14], matrix.data[15] ] );
 
-		matrix3 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[7],
-							matrix->data[8], matrix->data[9], matrix->data[11],
-							matrix->data[12], matrix->data[13], matrix->data[15] ] );
+		matrix3 = mkMat( [ matrix.data[4], matrix.data[5], matrix.data[7],
+							matrix.data[8], matrix.data[9], matrix.data[11],
+							matrix.data[12], matrix.data[13], matrix.data[15] ] );
 
-		matrix4 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[6],
-							matrix->data[8], matrix->data[9], matrix->data[10],
-							matrix->data[12], matrix->data[13], matrix->data[14] ] );
+		matrix4 = mkMat( [ matrix.data[4], matrix.data[5], matrix.data[6],
+							matrix.data[8], matrix.data[9], matrix.data[10],
+							matrix.data[12], matrix.data[13], matrix.data[14] ] );
 
-		determinate = matrix->data[0] * det(matrix1);
+		determinate = matrix.data[0] * det(matrix1);
 		determinate = determinate - ( matrix->data[1] * det(matrix2) );
 		determinate = determinate + ( matrix->data[2] * det(matrix3) );
 		determinate = determinate - ( matrix->data[3] * det(matrix4) );
@@ -156,21 +156,21 @@ Mat transpose( Mat matrix )
 
 	if( matrix.type == MAT2 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[2], 
-								matrix->data[1], matrix->data[3] ] );
+		matrixTrans = mkMat( [ matrix.data[0], matrix.data[2], 
+								matrix.data[1], matrix.data[3] ] );
 	}
 	else if( matrix.type == MAT3 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[3], matrix->data[6],
-								matrix->data[1], matrix->data[4], matrix->data[7],
-								matrix->data[2], matrix->data[5], matrix->data[8] ] );
+		matrixTrans = mkMat( [ matrix.data[0], matrix.data[3], matrix.data[6],
+								matrix.data[1], matrix.data[4], matrix.data[7],
+								matrix.data[2], matrix.data[5], matrix.data[8] ] );
 	}
 	else if( matrix.type == MAT4 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[4], matrix->data[8], matrix->data[12],
-								matrix->data[1], matrix->data[5], matrix->data[9], matrix->data[13],
-								matrix->data[2], matrix->data[6], matrix->data[10], matrix->data[14],
-								matrix->data[3], matrix->data[7], matrix->data[11], matrix->data[15] ] );
+		matrixTrans = mkMat( [ matrix.data[0], matrix.data[4], matrix.data[8], matrix.data[12],
+								matrix.data[1], matrix.data[5], matrix.data[9], matrix.data[13],
+								matrix.data[2], matrix.data[6], matrix.data[10], matrix.data[14],
+								matrix.data[3], matrix.data[7], matrix.data[11], matrix.data[15] ] );
 	}
 	else
 	{
@@ -212,7 +212,7 @@ void print( Mat_Vec mat_vec )
 		{
 			for( int col = 0; col < 2; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 2)] );
+				printf( "%f ", mat_vec.data[col + (row * 2)] );
 			}
 			printf( "\n" );
 		}
@@ -224,7 +224,7 @@ void print( Mat_Vec mat_vec )
 		{
 			for( int col = 0; col < 3; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 3)] );
+				printf( "%f ", mat_vec.data[col + (row * 3)] );
 			}
 			printf( "\n" );
 		}
@@ -235,7 +235,7 @@ void print( Mat_Vec mat_vec )
 		{
 			for( int col = 0; col < 4; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 4)] );
+				printf( "%f ", mat_vec.data[col + (row * 4)] );
 			}
 			printf( "\n" );
 		}
@@ -253,12 +253,12 @@ void print( Mat_Vec mat_vec )
 Mat2 mkMat2I( void )
 {
 	Mat matrix;
-	matrix->data = malloc( sizeof( double ) * 4 );
-	matrix->data[0] = 1;
-	matrix->data[1] = 0;
+	matrix.data = malloc( sizeof( double ) * 4 );
+	matrix.data[0] = 1;
+	matrix.data[1] = 0;
 
-	matrix->data[2] = 0;
-	matrix->data[3] = 1;
+	matrix.data[2] = 0;
+	matrix.data[3] = 1;
 
 	return matrix;
 }
@@ -266,18 +266,18 @@ Mat2 mkMat2I( void )
 Mat3 mkMat3I( void )
 {
 	Mat matrix;
-	matrix->data = malloc( sizeof( double ) * 9 );
-	matrix->data[0] = 1;
-	matrix->data[1] = 0;
-	matrix->data[2] = 0;
+	matrix.data = malloc( sizeof( double ) * 9 );
+	matrix.data[0] = 1;
+	matrix.data[1] = 0;
+	matrix.data[2] = 0;
 
-	matrix->data[3] = 0;
-	matrix->data[4] = 1;
-	matrix->data[5] = 0;
+	matrix.data[3] = 0;
+	matrix.data[4] = 1;
+	matrix.data[5] = 0;
 
-	matrix->data[6] = 0;
-	matrix->data[7] = 0;
-	matrix->data[8] = 1;
+	matrix.data[6] = 0;
+	matrix.data[7] = 0;
+	matrix.data[8] = 1;
 
 	return matrix;
 }
@@ -285,26 +285,26 @@ Mat3 mkMat3I( void )
 Mat4 mkMat4I( void )
 {
 	Mat matrix;
-	matrix->data = malloc( sizeof( double ) * 16 );
-	matrix->data[0] = 1;
-	matrix->data[1] = 0;
-	matrix->data[2] = 0;
-	matrix->data[3] = 0;
+	matrix.data = malloc( sizeof( double ) * 16 );
+	matrix.data[0] = 1;
+	matrix.data[1] = 0;
+	matrix.data[2] = 0;
+	matrix.data[3] = 0;
 
-	matrix->data[4] = 0;
-	matrix->data[5] = 1;
-	matrix->data[6] = 0;
-	matrix->data[7] = 0;
+	matrix.data[4] = 0;
+	matrix.data[5] = 1;
+	matrix.data[6] = 0;
+	matrix.data[7] = 0;
 
-	matrix->data[8] = 0;
-	matrix->data[9] = 0;
-	matrix->data[10] = 1;
-	matrix->data[11] = 0;
+	matrix.data[8] = 0;
+	matrix.data[9] = 0;
+	matrix.data[10] = 1;
+	matrix.data[11] = 0;
 
-	matrix->data[12] = 0;
-	matrix->data[13] = 0;
-	matrix->data[14] = 0;
-	matrix->data[15] = 1;
+	matrix.data[12] = 0;
+	matrix.data[13] = 0;
+	matrix.data[14] = 0;
+	matrix.data[15] = 1;
 
 	return matrix;
 }
