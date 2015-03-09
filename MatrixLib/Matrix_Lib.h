@@ -4,6 +4,11 @@
 #ifndef MATRIX_LIB
 #define MATRIX_LIB
 
+// External Library Includes
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 
 //The overall structure for the vectors or matrixs, they will be the same
 typedef enum
@@ -14,7 +19,7 @@ typedef enum
 	VEC2,
 	VEC3,
 	VEC4,
-	Mat_Vec
+	MAT_VEC
 } Mat_Vec_Type;
 
 struct Matrix_Vector
@@ -30,7 +35,7 @@ struct Matrix_Vector
 // Typedef all the ways you can write the enums into the struct Matrix_Vector
 // These are all refrences to the same struct, this will just be for convenience when
 // programming using the library this is also the same enum type
-typedef struct Matrix_Vector* Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
+typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
 
 /**
 * this takes in an array of doubles and given that array will determine
@@ -41,14 +46,14 @@ typedef struct Matrix_Vector* Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_
 * @param an array of doubles
 * @return a Matrix_Vector Struct configured for a vector
 **/
-Vec mkVec( double data[] );
+Vec* mkVec( double data[] );
 
 
 /**
 * takes a malloced matrix and frees the alloced memory
 *
 **/
-void destroyVec( Vec vector );
+void destroyVec( Vec *vector );
 
 /**
 * This will take an array of doubles and given the size of the array
@@ -59,7 +64,7 @@ void destroyVec( Vec vector );
 * @param an array of doubles
 * @return a Matrix_Vector Struct configured for a Matrix
 **/
-Mat mkMat( double data[] );
+Mat* mkMat( double data[] );
 
 /**
 * destroys a matrix, frees the dynamically allocated data region
@@ -67,21 +72,21 @@ Mat mkMat( double data[] );
 * kinda
 * returns void
 **/
-void destroyMat( Mat matrix );
+void destroyMat( Mat *matrix );
 
 /**
 * given a matrix in the Matrix_Vector Struct will return the determinate
 * of any matrix that is of size 2, 3, or 4.
 * returns a double
 **/
-double det( Mat matrix );
+double det( Mat *matrix );
 
 /**
 * will scale a matrix or a vector in the Matrix_Vector Struct format and
 * multiply each part by the double scaleAmount
 * returns that Matrix_Vector Struct
 **/
-Mat_Vec scale( Mat_Vec mat_vec, double scaleAmount );
+Mat_Vec* scale( Mat_Vec *mat_vec, double scaleAmount );
 
 /**
 * given a matrix in the Matrix_Vector Struct format will return the inverse
@@ -92,11 +97,6 @@ Mat_Vec scale( Mat_Vec mat_vec, double scaleAmount );
 * NOT IMPLEMENTED YET !!!!!!!!!
 **/
 
-/**
-* will multiply that matrix in the Matrix_Vector Struct format by itself
-* the power number of times then returns that Matrix_Vector Struct.
-**/
-Mat pow( Mat matrix, int power );
 
 
 /**
@@ -114,7 +114,7 @@ Mat pow( Mat matrix, int power );
 * This makes a new matrix and returns the transpose of the matrix passed in.
 * returns a Mat
 **/
-Mat transpose( Mat matrix );
+Mat* transpose( Mat *matrix );
 
 /**
 * This returns a new vector that is the projection of Vector 1 onto vector 2
@@ -122,20 +122,20 @@ Mat transpose( Mat matrix );
 * return Matrix_Vector Struct
 * // project Vector 1 onto vector 2
 **/
-Vec project( Vec vector1, Vec vector2 );
+Vec* project( Vec *vector1, Vec *vector2 );
 
 /**
 * returns the angle between two vectors
 * retuns a double that is the amount of degrees between two vectors
 **/
-double angle( Vec vector1, Vec vector2 );
+double angle( Vec *vector1, Vec *vector2 );
 
 
 /**
 * returns the length of a vector
 * returns a double
 **/
-double length( Vec vector );
+double length( Vec *vector );
 
 
 /**
@@ -143,33 +143,33 @@ double length( Vec vector );
 * that vector or matrix normalized.
 * retuns a Matrix_Vector Struct
 **/
-Vec normalize( Vec vec );
+Vec* normalize( Vec *vec );
 
 /**
 * if valid will do the matrix multiplication of two matrixes and can do the
 * the matrix vector multiplication.
 * returns a new Matrix_Vector Struct
 **/
-Mat_Vec multi( Mat matrix, Mat_Vec mat_vec );
+Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec );
 
 /**
 * will add two matricies or two vectors together and returns
 * a new Matrix_Vector Struct
 * returns a Matrix_Vector Struct
 **/
-Mat_Vec addMV( Mat_Vec mat_vec1, Mat_Vec mat_vec2 );
+Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 );
 
 /**
 * prints to standard out the matrix or vector passed in. returns void;
 **/
-void print( Mat_Vec mat_vec );
+void print( Mat_Vec *mat_vec );
 
 /**
 * this will take the dot product of two vectors and return
 * the double that is the dot product of those two vectors
 * returns a double
 **/
-double dotProd( Vec vec1, Vec vec2 );
+double dotProd( Vec *vec1, Vec *vec2 );
 
 /**
 * this will return the cross product of the two vectors.
@@ -177,7 +177,7 @@ double dotProd( Vec vec1, Vec vec2 );
 * this creates a new vector and returns it, this is the vector that is
 * the vector orthogonal to both vectors.
 **/
-VEC3 crossProd( VEC3 vec1, VEC3 vec2 );
+Vec3* crossProd( Vec3 *vec1, Vec3 *vec2 );
 
 
 /**
@@ -185,15 +185,15 @@ VEC3 crossProd( VEC3 vec1, VEC3 vec2 );
 * returns the vector passed in that is now of type vec4
 *
 **/
-VEC4 vec3ToVec4( VEC3 vector );
+Vec4* vec3ToVec4( Vec3 *vector );
 
 
 /**
 * returns an identity matrix that is the appropriate size
 * returns an identiy matrix you could also just use mkMat( [1, 0, 0, 0, 1, 0, 0, 0, 1])
 **/
-Mat2 mkMat2I( void );
-Mat3 mkMat3I( void );
-Mat4 mkMat4I( void );
+Mat2* mkMat2I( void );
+Mat3* mkMat3I( void );
+Mat4* mkMat4I( void );
 
 #endif

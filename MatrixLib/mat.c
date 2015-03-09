@@ -5,20 +5,16 @@
 
 
 
-// External Library Includes
-#include <stdio.h>
-
-
 
 // Internal Library Includes
 #include "Matrix_Lib.h"
 
 
 // Many functions will use this one, to make thier own matrix to return it.
-Mat mkMat( double data[] )
+Mat* mkMat( double data[] )
 {
 	int numElements = sizeof( data ) / sizeof( double );
-	Mat matrix = malloc( sizeof(struct Matrix_Vector) );
+	Mat *matrix = malloc( sizeof(struct Matrix_Vector) );
 
 	if( numElements == 4 )
 	{
@@ -56,7 +52,7 @@ Mat mkMat( double data[] )
 }
 
 
-void destroyMat( Mat matrix )
+void destroyMat( Mat *matrix )
 {
 	if( matrix != NULL )
 	{
@@ -67,9 +63,11 @@ void destroyMat( Mat matrix )
 }
 
 
-double det( Mat matrix )
+double det( Mat *matrix )
 {
 	double determinate;
+	double array[9];
+
 	if( matrix->type == MAT2 )
 	{
 		double val1, val2;
@@ -97,23 +95,32 @@ double det( Mat matrix )
 	}
 	else if( matrix->type == Mat4 )
 	{
-		Mat matrix1, matrix2, matrix3, matrix4;
+		Mat *matrix1, *matrix2, *matrix3, *matrix4;
 
-		matrix1 = mkMat( [ matrix->data[5], matrix->data[6], matrix->data[7],
-							matrix->data[9], matrix->data[10], matrix->data[11],
-							matrix->data[13], matrix->data[14], matrix->data[15] ] );
+		// use the array to make each one of the matricies
+		array = { matrix->data[5], matrix->data[6], matrix->data[7],
+				  matrix->data[9], matrix->data[10], matrix->data[11],
+				  matrix->data[13], matrix->data[14], matrix->data[15] };
+		matrix1 = mkMat( array );
 
-		matrix2 = mkMat( [ matrix->data[4], matrix->data[6], matrix->data[7],
-							matrix->data[8], matrix->data[10], matrix->data[11],
-							matrix->data[12], matrix->data[14], matrix->data[15] ] );
+		// matrix 2
+		array = { matrix->data[4], matrix->data[6], matrix->data[7],
+				  matrix->data[8], matrix->data[10], matrix->data[11],
+				  matrix->data[12], matrix->data[14], matrix->data[15] };
+		matrix2 = mkMat( array );
 
-		matrix3 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[7],
-							matrix->data[8], matrix->data[9], matrix->data[11],
-							matrix->data[12], matrix->data[13], matrix->data[15] ] );
+		// matrix 3
+		array = { matrix->data[4], matrix->data[5], matrix->data[7],
+				  matrix->data[8], matrix->data[9], matrix->data[11],
+				  matrix->data[12], matrix->data[13], matrix->data[15] };
+		matrix3 = mkMat( array );
 
-		matrix4 = mkMat( [ matrix->data[4], matrix->data[5], matrix->data[6],
-							matrix->data[8], matrix->data[9], matrix->data[10],
-							matrix->data[12], matrix->data[13], matrix->data[14] ] );
+
+		// matrix 4
+		array = { matrix->data[4], matrix->data[5], matrix->data[6],
+				  matrix->data[8], matrix->data[9], matrix->data[10],
+				  matrix->data[12], matrix->data[13], matrix->data[14] };
+		matrix4 = mkMat( array );
 
 		determinate = matrix->data[0] * det(matrix1);
 		determinate = determinate - ( matrix->data[1] * det(matrix2) );
@@ -135,42 +142,42 @@ double det( Mat matrix )
 }
 
 
-// This relies on the matrix multiplication function
-// I have a fear that there is a massive memory leak here because I loose a matrix
-// Every time I iteratate through the for loop.
-Mat pow( Mat matrix, int power )
+Mat* transpose( Mat *matrix )
 {
-	Mat returnMat = matrix;
-	for( int i = 1; i < power; i++ )
-	{
-		returnMat = multi( returnMat, matrix );
-	}
-
-	retun returnMat;
-}
-
-
-Mat transpose( Mat matrix )
-{
-	Mat matrixTrans;
+	Mat *matrixTrans;
+	double array2[4];
+	double array3[9];
+	double array4[16];
 
 	if( matrix->type == MAT2 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[2], 
-								matrix->data[1], matrix->data[3] ] );
+		array2[0] = matrix->data[0];
+		array2[1] = matrix->data[2];
+		array2[2] = matrix->data[1];
+		array2[3] = matrix->data[3];
+
+		matrixTrans = mkMat( array2 );
 	}
 	else if( matrix->type == MAT3 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[3], matrix->data[6],
-								matrix->data[1], matrix->data[4], matrix->data[7],
-								matrix->data[2], matrix->data[5], matrix->data[8] ] );
+		array3[0] = matrix->data[0];
+		array3[1] = matrix->data[3];
+		array3[2] = matrix->data[6];
+		array3[3] = matrix->data[1];
+		array3[4] = matrix->data[4];
+		array3[5] = matrix->data[7];
+		array3[6] = matrix->data[2];
+		array3[7] = matrix->data[5];
+		array3[8] = matrix->data[8];
+		matrixTrans = mkMat( array3 );
 	}
 	else if( matrix->type == MAT4 )
 	{
-		matrixTrans = mkMat( [ matrix->data[0], matrix->data[4], matrix->data[8], matrix->data[12],
-								matrix->data[1], matrix->data[5], matrix->data[9], matrix->data[13],
-								matrix->data[2], matrix->data[6], matrix->data[10], matrix->data[14],
-								matrix->data[3], matrix->data[7], matrix->data[11], matrix->data[15] ] );
+		array4 = { matrix->data[0], matrix->data[4], matrix->data[8], matrix->data[12],
+				  matrix->data[1], matrix->data[5], matrix->data[9], matrix->data[13],
+				  matrix->data[2], matrix->data[6], matrix->data[10], matrix->data[14],
+				  matrix->data[3], matrix->data[7], matrix->data[11], matrix->data[15] };
+		matrixTrans = mkMat( array4 );
 	}
 	else
 	{
@@ -183,7 +190,7 @@ Mat transpose( Mat matrix )
 
 
 
-void print( Mat_Vec mat_vec )
+void print( Mat_Vec *mat_vec )
 {
 	if( mat_vec->type == Vec2 )
 	{
@@ -250,9 +257,9 @@ void print( Mat_Vec mat_vec )
 
 
 
-Mat2 mkMat2I( void )
+Mat2* mkMat2I( void )
 {
-	Mat matrix;
+	Mat *matrix;
 	matrix->data = malloc( sizeof( double ) * 4 );
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
@@ -263,9 +270,9 @@ Mat2 mkMat2I( void )
 	return matrix;
 }
 
-Mat3 mkMat3I( void )
+Mat3* mkMat3I( void )
 {
-	Mat matrix;
+	Mat *matrix;
 	matrix->data = malloc( sizeof( double ) * 9 );
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
@@ -282,9 +289,9 @@ Mat3 mkMat3I( void )
 	return matrix;
 }
 
-Mat4 mkMat4I( void )
+Mat4* mkMat4I( void )
 {
-	Mat matrix;
+	Mat *matrix;
 	matrix->data = malloc( sizeof( double ) * 16 );
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
