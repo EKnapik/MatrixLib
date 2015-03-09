@@ -30,7 +30,7 @@ struct Matrix_Vector
 // Typedef all the ways you can write the enums into the struct Matrix_Vector
 // These are all refrences to the same struct, this will just be for convenience when
 // programming using the library this is also the same enum type
-typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
+typedef struct Matrix_Vector* Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_Vec;
 
 /**
 * this takes in an array of doubles and given that array will determine
@@ -42,6 +42,13 @@ typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_V
 * @return a Matrix_Vector Struct configured for a vector
 **/
 Vec mkVec( double data[] );
+
+
+/**
+* takes a malloced matrix and frees the alloced memory
+*
+**/
+void destroyVec( Vec vector );
 
 /**
 * This will take an array of doubles and given the size of the array
