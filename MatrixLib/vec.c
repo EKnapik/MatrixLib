@@ -58,17 +58,26 @@ Vec* project( Vec *vector1, Vec *vector2 )
 
 	if( vector2->type == VEC2 )
 	{
-		array2 = { vector2->x, vector2->y };
+		array2[0] = vector2->x;
+		array2[1] = vector2->y;
+
 		returnVec = mkVec( array2 );
 	}
 	else if( vector2->type == VEC3 )
 	{
-		array3 = { vector2->x, vector2->y, vector2->z };
+		array3[0] = vector2->x;
+		array3[1] = vector2->y;
+		array3[2] = vector2->z;
+
 		returnVec = mkVec( array3 );
 	}
 	else if( vector2->type == VEC4 )
 	{
-		array4 = { vector2->x, vector2->y, vector2->z, vector2->w }
+		array4[0] = vector2->x;
+		array4[1] = vector2->y;
+		array4[2] = vector2->z;
+		array4[3] = vector2->w;
+
 		returnVec = mkVec( array4 );
 	}
 	returnVec = scale( returnVec, scaleAmount );
@@ -114,9 +123,10 @@ Vec3* crossProd( Vec3 *vec1, Vec3 *vec2 )
 
 	if( vec1->type == vec2->type == VEC3 )
 	{
-		array3 = { ((vec1->y*vec2->z) - (vec1->z*vec2->y)),
-				  -((vec1->x*vec2->z)-(vec1->z*vec2->x)),
-				   ((vec1->x*vec2->y)-(vec1->y*vec2->x)) };
+		array3[0] = ((vec1->y*vec2->z) - (vec1->z*vec2->y));
+		array3[1] = -((vec1->x*vec2->z)-(vec1->z*vec2->x));
+		array3[2] = ((vec1->x*vec2->y)-(vec1->y*vec2->x));
+
 		returnVec = mkVec( array3 );
 	}
 	else
@@ -138,7 +148,7 @@ Vec4* vec3ToVec4( Vec3 *vector )
 	else
 	{
 		perror( "Vector is not of type VEC3\n" );
-		return NULL
+		return NULL;
 	}
 }
 
@@ -178,17 +188,26 @@ Vec* normalize( Vec *vec )
 
 	if( vec->type == VEC2 )
 	{
-		array2 = { (vec->x / vecLen), (vec->y / vecLen) };
+		array2[0] = (vec->x / vecLen);
+		array2[1] = (vec->y / vecLen);
+
 		returnVec = mkVec( array2 );
 	}
 	else if( vec->type == VEC3 )
 	{
-		array3 = { (vec->x / vecLen), (vec->y / vecLen), (vec->z / vecLen) }
+		array3[0] = (vec->x / vecLen);
+		array3[1] = (vec->y / vecLen);
+		array3[2] = (vec->z / vecLen);
+
 		returnVec = mkVec( array3 );
 	}
 	else if( vec->type == VEC4 )
 	{
-		array4 = { (vec->x / vecLen), (vec->y / vecLen), (vec->z / vecLen), (vec->w / vecLen) };
+		array4[0] = (vec->x / vecLen);
+		array4[1] = (vec->y / vecLen);
+		array4[2] = (vec->z / vecLen);
+		array4[3] = (vec->w / vecLen);
+
 		returnVec = mkVec( array4 );
 	}
 	else

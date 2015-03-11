@@ -93,7 +93,7 @@ double det( Mat *matrix )
 
 		determinate = determinate - val1 - val2 - val3;
 	}
-	else if( matrix->type == Mat4 )
+	else if( matrix->type == MAT4 )
 	{
 		Mat *matrix1, *matrix2, *matrix3, *matrix4;
 
@@ -162,7 +162,7 @@ double det( Mat *matrix )
 	}
 	else
 	{
-		determinate = NULL;
+		determinate = -99999999;
 		perror( "Could not find the determinate of the matrix\n" );
 	}
 
@@ -234,20 +234,20 @@ Mat* transpose( Mat *matrix )
 
 void print( Mat_Vec *mat_vec )
 {
-	if( mat_vec->type == Vec2 )
+	if( mat_vec->type == VEC2 )
 	{
 		printf( "%f\n", mat_vec->x );
 		printf( "%f\n", mat_vec->y );
 
 	}
-	else if( mat_vec->type == Vec3 )
+	else if( mat_vec->type == VEC3 )
 	{
 		printf( "%f\n", mat_vec->x );
 		printf( "%f\n", mat_vec->y );
 		printf( "%f\n", mat_vec->z );
 
 	}
-	else if( mat_vec->type == Vec4 )
+	else if( mat_vec->type == VEC4 )
 	{
 		printf( "%f\n", mat_vec->x );
 		printf( "%f\n", mat_vec->y );
@@ -255,7 +255,7 @@ void print( Mat_Vec *mat_vec )
 		printf( "%f\n", mat_vec->w );
 
 	}
-	else if( mat_vec->type == Mat2 )
+	else if( mat_vec->type == MAT2 )
 	{
 		for( int row = 0; row < 2; row++ )
 		{
@@ -267,7 +267,7 @@ void print( Mat_Vec *mat_vec )
 		}
 
 	}
-	else if( mat_vec->type == Mat3 )
+	else if( mat_vec->type == MAT3 )
 	{
 		for( int row = 0; row < 3; row++ )
 		{
@@ -278,7 +278,7 @@ void print( Mat_Vec *mat_vec )
 			printf( "\n" );
 		}
 	}
-	else if( mat_vec->type == Mat4 )
+	else if( mat_vec->type == MAT4 )
 	{
 		for( int row = 0; row < 4; row++ )
 		{
