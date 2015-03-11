@@ -98,28 +98,56 @@ double det( Mat *matrix )
 		Mat *matrix1, *matrix2, *matrix3, *matrix4;
 
 		// use the array to make each one of the matricies
-		array = { matrix->data[5], matrix->data[6], matrix->data[7],
-				  matrix->data[9], matrix->data[10], matrix->data[11],
-				  matrix->data[13], matrix->data[14], matrix->data[15] };
+		array[0] = matrix->data[5];
+		array[1] = matrix->data[6];
+		array[2] = matrix->data[7];
+		array[3] = matrix->data[9];
+		array[4] = matrix->data[10];
+		array[5] = matrix->data[11];
+		array[6] = matrix->data[13];
+		array[7] = matrix->data[14];
+		array[8] = matrix->data[15];
+
 		matrix1 = mkMat( array );
 
 		// matrix 2
-		array = { matrix->data[4], matrix->data[6], matrix->data[7],
-				  matrix->data[8], matrix->data[10], matrix->data[11],
-				  matrix->data[12], matrix->data[14], matrix->data[15] };
+		array[0] = matrix->data[4];
+		array[1] = matrix->data[6];
+		array[2] = matrix->data[7];
+		array[3] = matrix->data[8];
+		array[4] = matrix->data[10];
+		array[5] = matrix->data[11];
+		array[6] = matrix->data[12];
+		array[7] = matrix->data[14];
+		array[8] = matrix->data[15];
+
 		matrix2 = mkMat( array );
 
 		// matrix 3
-		array = { matrix->data[4], matrix->data[5], matrix->data[7],
-				  matrix->data[8], matrix->data[9], matrix->data[11],
-				  matrix->data[12], matrix->data[13], matrix->data[15] };
+		array[0] = matrix->data[4],
+		array[1] = matrix->data[5],
+		array[2] = matrix->data[7],
+		array[3] = matrix->data[8],
+		array[4] = matrix->data[9],
+		array[5] = matrix->data[11],
+		array[6] = matrix->data[12],
+		array[7] = matrix->data[13],
+		array[8] = matrix->data[15];
+
 		matrix3 = mkMat( array );
 
 
 		// matrix 4
-		array = { matrix->data[4], matrix->data[5], matrix->data[6],
-				  matrix->data[8], matrix->data[9], matrix->data[10],
-				  matrix->data[12], matrix->data[13], matrix->data[14] };
+		array[0] = matrix->data[4];
+		array[1] = matrix->data[5];
+		array[2] = matrix->data[6];
+		array[3] = matrix->data[8];
+		array[4] = matrix->data[9];
+		array[5] = matrix->data[10];
+	    array[6] = matrix->data[12];
+	    array[7] = matrix->data[13];
+	    array[8] = matrix->data[14];
+
 		matrix4 = mkMat( array );
 
 		determinate = matrix->data[0] * det(matrix1);
@@ -169,14 +197,28 @@ Mat* transpose( Mat *matrix )
 		array3[6] = matrix->data[2];
 		array3[7] = matrix->data[5];
 		array3[8] = matrix->data[8];
+
 		matrixTrans = mkMat( array3 );
 	}
 	else if( matrix->type == MAT4 )
 	{
-		array4 = { matrix->data[0], matrix->data[4], matrix->data[8], matrix->data[12],
-				  matrix->data[1], matrix->data[5], matrix->data[9], matrix->data[13],
-				  matrix->data[2], matrix->data[6], matrix->data[10], matrix->data[14],
-				  matrix->data[3], matrix->data[7], matrix->data[11], matrix->data[15] };
+		array4[0] = matrix->data[0];
+		array4[1] = matrix->data[4];
+		array4[2] = matrix->data[8];
+		array4[3] = matrix->data[12];
+		array4[4] = matrix->data[1];
+		array4[5] = matrix->data[5];
+		array4[6] = matrix->data[9];
+		array4[7] = matrix->data[13];
+		array4[8] = matrix->data[2];
+		array4[9] = matrix->data[6];
+		array4[10] = matrix->data[10];
+		array4[11] = matrix->data[14];
+		array4[12] = matrix->data[3];
+		array4[13] = matrix->data[7];
+		array4[14] = matrix->data[11];
+		array4[15] = matrix->data[15];
+
 		matrixTrans = mkMat( array4 );
 	}
 	else
