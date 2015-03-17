@@ -4,6 +4,22 @@ can then be run. The Idle functions under the hood very similar to a turing mach
 works on the command line similar to how the python idle works. This idle program
 contains scope, variable memory and its own C-style syntax.
 
+
+
+IMPORTANT:
+When making a matrix or vector with the mkMat and mkVec functions
+mkMat takes an int which is the numnber of elements in the array and an array of doubles
+for that array mkMat will consider it to be structured such that element 0 is row 0 column 0
+and element 1 in the array is row 0 and column 1.
+THIS IS ROW MAJOR STORAGE FOR THE ARRAY mkMat assumes the array will be in
+ROW MAJOR ORDERING
+
+mkVec assumes that element x is in the array at index 0 and element y is at
+index 1 and so on..
+
+Vectors are considered to be a Nx1 matrix so multiplication must be done accordingly
+
+
 Library Commands:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You are able to define any Vector or Matrix by using the following type declaration
