@@ -14,7 +14,7 @@ int main( int argc, char *argv[] )
     double array3[] =  {1, 4, 5};
     double array4[] =  {4, 6, 1, 8};
     double array9[] =  {3, 2, 4, 7, 1, 2, 6, 7, 78};
-    double array16[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+    double array16[] = {1, 2, 2, 1, 1, 2, 4, 2, 2, 7, 5, 2, -1, 4, -6, 3};
 
 
     // TEST ALL THE IDENTITIES ////////////////////////////
@@ -55,6 +55,49 @@ int main( int argc, char *argv[] )
     printf( "\n" );
     destroyMat( matrix );
 
+    /////// DETERMINATE FUNCTION //////////
+    printf( "DETERMINATE TEST\n" );
+    double determinate;
+    matrix = mkMat( 16, array16 );
+    print( matrix );
+    determinate = det( matrix );
+    printf( "The determinate is: %.2f \n", determinate );
+
+    printf("\n");
+    ////////// END DETERMINATE TEST/////////
+
+    ////////// TRANSPOSE TEST ////////
+    printf( "Transpose test\n");
+    Mat *matrixTrans;
+    matrixTrans = transpose( matrix );
+    print( matrix );
+    printf( "\n" );
+    print( matrixTrans );
+    printf( "\n" );
+    
+    destroyMat( matrixTrans );
+    destroyMat( matrix );
+
+    /////// END TRANSPOSE TEST //////////
+    
+    ///// MULTIPLICATION TEST ///////////
+    printf( "MULTIPLICATION TEST \n" );
+    Mat *matrix2;
+    Mat *answerMat;
+    matrix = mkMat( 9, array9 );
+    matrix2 = mkMat3I();
+    answerMat = multi( matrix, matrix2 );
+
+    print( answerMat );
+    printf( "\n" );
+    
+    destroyMat( answerMat );
+    destroyMat( matrix2 );
+    destroyMat( matrix );
+
+    ///////// END MULTIPLICATION TEST ///////////
+
+    
     return 0;
 
 }

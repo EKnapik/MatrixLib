@@ -221,7 +221,7 @@ Vec* normalize( Vec *vec )
 
 Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 {
-	if( matrix->type != MAT2 || matrix->type != MAT3 || matrix->type != MAT4 )
+	if( !(matrix->type == MAT2 || matrix->type == MAT3 || matrix->type == MAT4) )
 	{
 		perror( "The first param was not a matrix\n" );
 		return NULL;
