@@ -238,23 +238,23 @@ void print( Mat_Vec *mat_vec )
 {
 	if( mat_vec->type == VEC2 )
 	{
-		printf( "%f\n", mat_vec->x );
-		printf( "%f\n", mat_vec->y );
+		printf( "%.2f\n", mat_vec->x );
+		printf( "%.2f\n", mat_vec->y );
 
 	}
 	else if( mat_vec->type == VEC3 )
 	{
-		printf( "%f\n", mat_vec->x );
-		printf( "%f\n", mat_vec->y );
-		printf( "%f\n", mat_vec->z );
+		printf( "%.2f\n", mat_vec->x );
+		printf( "%.2f\n", mat_vec->y );
+		printf( "%.2f\n", mat_vec->z );
 
 	}
 	else if( mat_vec->type == VEC4 )
 	{
-		printf( "%f\n", mat_vec->x );
-		printf( "%f\n", mat_vec->y );
-		printf( "%f\n", mat_vec->z );
-		printf( "%f\n", mat_vec->w );
+		printf( "%.2f\n", mat_vec->x );
+		printf( "%.2f\n", mat_vec->y );
+		printf( "%.2f\n", mat_vec->z );
+		printf( "%.2f\n", mat_vec->w );
 
 	}
 	else if( mat_vec->type == MAT2 )

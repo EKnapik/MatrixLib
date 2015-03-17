@@ -82,10 +82,13 @@ int main( int argc, char *argv[] )
     
     ///// MULTIPLICATION TEST ///////////
     printf( "MULTIPLICATION TEST \n" );
+    double translate[] = {1, 0, 0, 0, 1, -1, 0, 0, 1};
+    double points[] = {1, -1, 0, 0, 0, -1, 1, 1, 1};
+
     Mat *matrix2;
     Mat *answerMat;
-    matrix = mkMat( 9, array9 );
-    matrix2 = mkMat3I();
+    matrix = mkMat( 9, translate );
+    matrix2 = mkMat( 9, points );
     answerMat = multi( matrix, matrix2 );
 
     print( answerMat );
@@ -98,6 +101,44 @@ int main( int argc, char *argv[] )
     ///////// END MULTIPLICATION TEST ///////////
 
     
+    ////// TEST THE CREATION OF VECTORS ////////
+    printf( "TEST FOR VECTOR CREATION\n" );
+    Vec *vector1 = mkVec( 2, array2 );
+    Vec *vector2 = mkVec( 3, array3 );
+    Vec *vector3 = mkVec( 4, array4 );
+
+    print( vector1 );
+    printf( "\n" );
+    print( vector2 );
+    printf( "\n" );
+    print( vector3 );
+    printf( "\n" );
+    
+    destroyVec( vector1 );
+    destroyVec( vector2 );
+    destroyVec( vector3 );
+
+    ///// END OF VECTOR CREATION TEST /////
+
+
+    ////// MATRIX VECTOR MULTIPLICATION TEST ////////
+    //////// 3x3 * 3x1 ///////////
+    printf( "MATRIX VECTOR MULTIPICATION\n" );
+    vector1 = mkVec( 4, array4 );
+    Vec *answerVec;
+    matrix = mkMat( 16, array16 );
+
+    answerVec = multi( matrix, vector1 );
+    print( answerVec );
+    printf( "\n" );
+
+    destroyMat( matrix );
+    destroyVec( vector1 );
+    destroyVec( answerVec );
+
+    /// END THE MATRIX VECTOR MULTI TEST/////
+
+
     return 0;
 
 }

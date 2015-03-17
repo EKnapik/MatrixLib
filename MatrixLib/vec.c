@@ -267,9 +267,9 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array9[0] = ((matrix->data[0] * mat_vec->data[0] ) + (matrix->data[1] * mat_vec->data[3]) + (matrix->data[2] * mat_vec->data[6]));
 		array9[1] = ((matrix->data[0] * mat_vec->data[1] ) + (matrix->data[1] * mat_vec->data[4]) + (matrix->data[2] * mat_vec->data[7]));
 		array9[2] = ((matrix->data[0] * mat_vec->data[2] ) + (matrix->data[1] * mat_vec->data[5]) + (matrix->data[2] * mat_vec->data[8]));
-		array9[3] = ((matrix->data[3] * mat_vec->data[0] ) + (matrix->data[3] * mat_vec->data[3]) + (matrix->data[4] * mat_vec->data[6]));
-		array9[4] = ((matrix->data[3] * mat_vec->data[1] ) + (matrix->data[3] * mat_vec->data[4]) + (matrix->data[4] * mat_vec->data[7]));
-		array9[5] = ((matrix->data[3] * mat_vec->data[2] ) + (matrix->data[3] * mat_vec->data[5]) + (matrix->data[4] * mat_vec->data[8]));
+		array9[3] = ((matrix->data[3] * mat_vec->data[0] ) + (matrix->data[4] * mat_vec->data[3]) + (matrix->data[5] * mat_vec->data[6]));
+		array9[4] = ((matrix->data[3] * mat_vec->data[1] ) + (matrix->data[4] * mat_vec->data[4]) + (matrix->data[5] * mat_vec->data[7]));
+		array9[5] = ((matrix->data[3] * mat_vec->data[2] ) + (matrix->data[4] * mat_vec->data[5]) + (matrix->data[5] * mat_vec->data[8]));
 		array9[6] = ((matrix->data[6] * mat_vec->data[0] ) + (matrix->data[7] * mat_vec->data[3]) + (matrix->data[8] * mat_vec->data[6]));
 		array9[7] = ((matrix->data[6] * mat_vec->data[1] ) + (matrix->data[7] * mat_vec->data[4]) + (matrix->data[8] * mat_vec->data[7]));
 		array9[8] = ((matrix->data[6] * mat_vec->data[2] ) + (matrix->data[7] * mat_vec->data[5]) + (matrix->data[8] * mat_vec->data[8]));
