@@ -11,6 +11,9 @@
 
 
 // Many functions will use this one, to make thier own matrix to return it.
+// This function could be shrunk down and only use the if conditionals
+// to set the type of matrix but I want to see the differences and keep
+// it separate
 Mat* mkMat( double data[] )
 {
 	int numElements = sizeof( data ) / sizeof( double );
