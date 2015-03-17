@@ -46,7 +46,7 @@ typedef struct Matrix_Vector Vec, Vec2, Vec3, Vec4, Mat, Mat2, Mat3, Mat4, Mat_V
 * @param an array of doubles
 * @return a Matrix_Vector Struct configured for a vector
 **/
-Vec* mkVec( double data[] );
+Vec* mkVec( int numElements, double data[] );
 
 
 /**
@@ -64,7 +64,7 @@ void destroyVec( Vec *vector );
 * @param an array of doubles
 * @return a Matrix_Vector Struct configured for a Matrix
 **/
-Mat* mkMat( double data[] );
+Mat* mkMat( int numElemets, double data[] );
 
 /**
 * destroys a matrix, frees the dynamically allocated data region

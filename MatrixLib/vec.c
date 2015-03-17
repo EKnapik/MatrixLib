@@ -12,9 +12,8 @@
 #define PI 3.14159265
 
 
-Vec* mkVec( double data[] )
+Vec* mkVec( int numElements, double data[] )
 {
-	int numElements = sizeof( data ) / sizeof( double );
 	Vec *vector = malloc( sizeof( struct Matrix_Vector ) );
 
 	if( numElements >= 2 )
@@ -61,7 +60,7 @@ Vec* project( Vec *vector1, Vec *vector2 )
 		array2[0] = vector2->x;
 		array2[1] = vector2->y;
 
-		returnVec = mkVec( array2 );
+		returnVec = mkVec( 2, array2 );
 	}
 	else if( vector2->type == VEC3 )
 	{
@@ -69,7 +68,7 @@ Vec* project( Vec *vector1, Vec *vector2 )
 		array3[1] = vector2->y;
 		array3[2] = vector2->z;
 
-		returnVec = mkVec( array3 );
+		returnVec = mkVec( 3, array3 );
 	}
 	else if( vector2->type == VEC4 )
 	{
@@ -78,7 +77,7 @@ Vec* project( Vec *vector1, Vec *vector2 )
 		array4[2] = vector2->z;
 		array4[3] = vector2->w;
 
-		returnVec = mkVec( array4 );
+		returnVec = mkVec( 4, array4 );
 	}
 	returnVec = scale( returnVec, scaleAmount );
 
@@ -127,7 +126,7 @@ Vec3* crossProd( Vec3 *vec1, Vec3 *vec2 )
 		array3[1] = -((vec1->x*vec2->z)-(vec1->z*vec2->x));
 		array3[2] = ((vec1->x*vec2->y)-(vec1->y*vec2->x));
 
-		returnVec = mkVec( array3 );
+		returnVec = mkVec( 3, array3 );
 	}
 	else
 	{
@@ -191,7 +190,7 @@ Vec* normalize( Vec *vec )
 		array2[0] = (vec->x / vecLen);
 		array2[1] = (vec->y / vecLen);
 
-		returnVec = mkVec( array2 );
+		returnVec = mkVec( 2, array2 );
 	}
 	else if( vec->type == VEC3 )
 	{
@@ -199,7 +198,7 @@ Vec* normalize( Vec *vec )
 		array3[1] = (vec->y / vecLen);
 		array3[2] = (vec->z / vecLen);
 
-		returnVec = mkVec( array3 );
+		returnVec = mkVec( 3, array3 );
 	}
 	else if( vec->type == VEC4 )
 	{
@@ -208,7 +207,7 @@ Vec* normalize( Vec *vec )
 		array4[2] = (vec->z / vecLen);
 		array4[3] = (vec->w / vecLen);
 
-		returnVec = mkVec( array4 );
+		returnVec = mkVec( 4, array4 );
 	}
 	else
 	{
@@ -241,7 +240,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array2[0] = ((matrix->data[0] * mat_vec->x) + (matrix->data[1] * mat_vec->y));
 		array2[1] = ((matrix->data[2] * mat_vec->x) + (matrix->data[3] * mat_vec->y));
 
-		returnMat_Vec = mkVec( array2 );
+		returnMat_Vec = mkVec( 2, array2 );
 	}
 	// 2x2 * 2x2
 	else if( matrix->type == MAT2 && mat_vec->type == MAT2 )
@@ -251,7 +250,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array4[2] = ((matrix->data[1] * mat_vec->data[0]) + (matrix->data[3] * mat_vec->data[2]));
 		array4[3] = ((matrix->data[1] * mat_vec->data[1]) + (matrix->data[3] * mat_vec->data[3]));
 
-		returnMat_Vec = mkMat( array4 );
+		returnMat_Vec = mkMat( 4, array4 );
 	}
 	// 3x3 * 3x1
 	else if( matrix->type == MAT3 && mat_vec->type == VEC3 )
@@ -260,7 +259,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array3[1] = ((matrix->data[3] * mat_vec->x) + (matrix->data[4] * mat_vec->y) + (matrix->data[5] * mat_vec->z));
 		array3[2] = ((matrix->data[6] * mat_vec->x) + (matrix->data[7] * mat_vec->y) + (matrix->data[8] * mat_vec->z));
 
-		returnMat_Vec = mkVec( array3 );
+		returnMat_Vec = mkVec( 3, array3 );
 	}
 	// 3x3 * 3x3
 	else if( matrix->type == MAT3 && mat_vec->type == MAT3 )
@@ -275,7 +274,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array9[7] = ((matrix->data[6] * mat_vec->data[1] ) + (matrix->data[7] * mat_vec->data[4]) + (matrix->data[8] * mat_vec->data[7]));
 		array9[8] = ((matrix->data[6] * mat_vec->data[2] ) + (matrix->data[7] * mat_vec->data[5]) + (matrix->data[8] * mat_vec->data[8]));
 
-		returnMat_Vec = mkMat( array9 );
+		returnMat_Vec = mkMat( 9, array9 );
 	}
 	// 4x4 * 4x1
 	else if( matrix->type == MAT4 && mat_vec->type == VEC4 )
@@ -285,7 +284,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array4[2] = ((matrix->data[8] * mat_vec->x) + (matrix->data[9] * mat_vec->y) + (matrix->data[10] * mat_vec->z) + (matrix->data[11] * mat_vec->z));
 		array4[3] = ((matrix->data[12] * mat_vec->x) + (matrix->data[13] * mat_vec->y) + (matrix->data[14] * mat_vec->z) + (matrix->data[15] * mat_vec->z));
 
-		returnMat_Vec = mkVec( array4 );
+		returnMat_Vec = mkVec( 4, array4 );
 	}
 	// 4x4 * 4x4
 	else if( matrix->type == MAT4 && mat_vec->type == MAT4 )
@@ -307,7 +306,7 @@ Mat_Vec* multi( Mat *matrix, Mat_Vec *mat_vec )
 		array16[14] = ((matrix->data[12] * mat_vec->data[2] ) + (matrix->data[13] * mat_vec->data[6]) + (matrix->data[14] * mat_vec->data[10]) + (matrix->data[15] * mat_vec->data[14]));
 		array16[15] = ((matrix->data[12] * mat_vec->data[3] ) + (matrix->data[13] * mat_vec->data[7]) + (matrix->data[14] * mat_vec->data[11]) + (matrix->data[15] * mat_vec->data[15]));
 
-		returnMat_Vec = mkMat( array16 );
+		returnMat_Vec = mkMat( 16, array16 );
 	}
 	else
 	{
@@ -333,7 +332,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array2[0] = (mat_vec1->x + mat_vec2->x);
 		array2[1] = (mat_vec1->y + mat_vec2->y);
 
-		returnMat_Vec = mkVec( array2 );
+		returnMat_Vec = mkVec( 2, array2 );
 	}
 	else if( mat_vec1->type == VEC3 && mat_vec2->type == VEC3 )
 	{
@@ -341,7 +340,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array3[1] = (mat_vec1->y + mat_vec2->y);
 		array3[2] = (mat_vec1->z + mat_vec2->z);
 
-		returnMat_Vec = mkVec( array3 );
+		returnMat_Vec = mkVec( 3, array3 );
 	}
 	else if( mat_vec1->type == VEC4 && mat_vec2->type == VEC4 )
 	{
@@ -350,7 +349,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array4[2] = (mat_vec1->z + mat_vec2->z);
 		array4[3] = (mat_vec1->w + mat_vec2->w);
 
-		returnMat_Vec = mkVec( array4 );
+		returnMat_Vec = mkVec( 4, array4 );
 	}
 	else if( mat_vec1->type == MAT2 && mat_vec2->type == MAT2 )
 	{
@@ -359,7 +358,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array4[2] = (mat_vec1->data[2] + mat_vec2->data[2]);
 		array4[3] = (mat_vec1->data[3] + mat_vec2->data[3]);
 
-		returnMat_Vec = mkMat( array4 );
+		returnMat_Vec = mkMat( 4, array4 );
 	}
 	else if( mat_vec1->type == MAT2 && mat_vec2->type == MAT2 )
 	{
@@ -373,7 +372,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array9[7] = (mat_vec1->data[7] + mat_vec2->data[7]);
 		array9[8] = (mat_vec1->data[8] + mat_vec2->data[8]);
 
-		returnMat_Vec = mkMat( array9 );
+		returnMat_Vec = mkMat( 9, array9 );
 	}
 	else if( mat_vec1->type == MAT2 && mat_vec2->type == MAT2 )
 	{
@@ -394,7 +393,7 @@ Mat_Vec* addMV( Mat_Vec *mat_vec1, Mat_Vec *mat_vec2 )
 		array16[14] = (mat_vec1->data[14] + mat_vec2->data[14]);
 		array16[15] = (mat_vec1->data[15] + mat_vec2->data[15]);
 
-		returnMat_Vec = mkMat( array16 );
+		returnMat_Vec = mkMat( 16, array16 );
 	}
 	else
 	{

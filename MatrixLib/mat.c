@@ -14,9 +14,8 @@
 // This function could be shrunk down and only use the if conditionals
 // to set the type of matrix but I want to see the differences and keep
 // it separate
-Mat* mkMat( double data[] )
+Mat* mkMat( int numElements, double data[] )
 {
-	int numElements = sizeof( data ) / sizeof( double );
 	Mat *matrix = malloc( sizeof(struct Matrix_Vector) );
 
 	if( numElements == 4 )
@@ -111,7 +110,7 @@ double det( Mat *matrix )
 		array[7] = matrix->data[14];
 		array[8] = matrix->data[15];
 
-		matrix1 = mkMat( array );
+		matrix1 = mkMat( 9, array );
 
 		// matrix 2
 		array[0] = matrix->data[4];
@@ -124,7 +123,7 @@ double det( Mat *matrix )
 		array[7] = matrix->data[14];
 		array[8] = matrix->data[15];
 
-		matrix2 = mkMat( array );
+		matrix2 = mkMat( 9, array );
 
 		// matrix 3
 		array[0] = matrix->data[4],
@@ -137,7 +136,7 @@ double det( Mat *matrix )
 		array[7] = matrix->data[13],
 		array[8] = matrix->data[15];
 
-		matrix3 = mkMat( array );
+		matrix3 = mkMat( 9, array );
 
 
 		// matrix 4
@@ -151,7 +150,7 @@ double det( Mat *matrix )
 	    array[7] = matrix->data[13];
 	    array[8] = matrix->data[14];
 
-		matrix4 = mkMat( array );
+		matrix4 = mkMat( 9, array );
 
 		determinate = matrix->data[0] * det(matrix1);
 		determinate = determinate - ( matrix->data[1] * det(matrix2) );
@@ -187,7 +186,7 @@ Mat* transpose( Mat *matrix )
 		array2[2] = matrix->data[1];
 		array2[3] = matrix->data[3];
 
-		matrixTrans = mkMat( array2 );
+		matrixTrans = mkMat( 4, array2 );
 	}
 	else if( matrix->type == MAT3 )
 	{
@@ -201,7 +200,7 @@ Mat* transpose( Mat *matrix )
 		array3[7] = matrix->data[5];
 		array3[8] = matrix->data[8];
 
-		matrixTrans = mkMat( array3 );
+		matrixTrans = mkMat( 9, array3 );
 	}
 	else if( matrix->type == MAT4 )
 	{
@@ -222,7 +221,7 @@ Mat* transpose( Mat *matrix )
 		array4[14] = matrix->data[11];
 		array4[15] = matrix->data[15];
 
-		matrixTrans = mkMat( array4 );
+		matrixTrans = mkMat( 16, array4 );
 	}
 	else
 	{
@@ -264,7 +263,7 @@ void print( Mat_Vec *mat_vec )
 		{
 			for( int col = 0; col < 2; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 2)] );
+				printf( "%.2f ", mat_vec->data[col + (row * 2)] );
 			}
 			printf( "\n" );
 		}
@@ -276,7 +275,7 @@ void print( Mat_Vec *mat_vec )
 		{
 			for( int col = 0; col < 3; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 3)] );
+				printf( "%.2f ", mat_vec->data[col + (row * 3)] );
 			}
 			printf( "\n" );
 		}
@@ -287,7 +286,7 @@ void print( Mat_Vec *mat_vec )
 		{
 			for( int col = 0; col < 4; col++ )
 			{
-				printf( "%f ", mat_vec->data[col + (row * 4)] );
+				printf( "%.2f ", mat_vec->data[col + (row * 4)] );
 			}
 			printf( "\n" );
 		}
@@ -304,8 +303,10 @@ void print( Mat_Vec *mat_vec )
 
 Mat2* mkMat2I( void )
 {
-	Mat *matrix;
+	Mat *matrix = malloc( sizeof( Mat ) );
 	matrix->data = malloc( sizeof( double ) * 4 );
+    matrix->type = MAT2;
+
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
 
@@ -317,8 +318,10 @@ Mat2* mkMat2I( void )
 
 Mat3* mkMat3I( void )
 {
-	Mat *matrix;
+	Mat *matrix = malloc( sizeof( Mat ) );
 	matrix->data = malloc( sizeof( double ) * 9 );
+    matrix->type = MAT3;
+
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
 	matrix->data[2] = 0;
@@ -336,8 +339,10 @@ Mat3* mkMat3I( void )
 
 Mat4* mkMat4I( void )
 {
-	Mat *matrix;
+	Mat *matrix = malloc( sizeof( Mat ) );
 	matrix->data = malloc( sizeof( double ) * 16 );
+    matrix->type = MAT4;
+
 	matrix->data[0] = 1;
 	matrix->data[1] = 0;
 	matrix->data[2] = 0;
